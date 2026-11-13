@@ -124,6 +124,9 @@ body.iso #title .btn,body.iso #title .srow{-webkit-backdrop-filter:blur(3px)}
 .slot.pinned{box-shadow:inset 0 0 0 .15rem #f2c14e}
 #padstat{font-size:0.75rem;line-height:1.3;margin-top:0.25rem;opacity:.8}
 #ctext{font-size:1rem;line-height:1.35}
+body.calm #jsets.flipR,body.calm #jsets.flipL{animation:none}body.calm #toast{transition:none}
+#album .card{max-width:34rem}#algrid{grid-template-columns:repeat(3,1fr)}#algrid .slot{min-height:0;padding:.25rem}#algrid .slot img{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:.3rem;display:block}
+#alview{width:100%;max-height:50vh;object-fit:contain;border-radius:.5rem;display:none;margin-top:.5rem;background:#0b0e14}#alinfo{text-align:left}
 :root{--st:max(env(safe-area-inset-top,0px),var(--ast,0px));--sr:max(env(safe-area-inset-right,0px),var(--asr,0px));--sb:max(env(safe-area-inset-bottom,0px),var(--asb,0px));--sl:max(env(safe-area-inset-left,0px),var(--asl,0px))}
 #saprobe{position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;pointer-events:none;padding:var(--st) var(--sr) var(--sb) var(--sl)}
 #count{left:calc(0.625rem + var(--sl));top:calc(0.625rem + var(--st))}
@@ -153,11 +156,11 @@ body.iso .req .rs{background:rgba(241,231,208,.1)}body.iso .req.done .rs{backgro
   <button class="btn nav" id="tcont">Continue</button><button class="btn nav" id="tnew">Start</button>
   <div class="srow nav" id="tslot"><span class="nm" style="flex:0 0 auto">Save</span><button class="pm">&lt;</button><span class="val" id="tslotv"></span><button class="pm">&gt;</button></div>
   <button class="btn nav ghost" id="tset">Settings</button><button class="btn nav ghost" id="tfull" style="display:none">Full screen</button><button class="btn nav ghost" id="tquit">Quit</button>
-  <div class="ver">v0.14.3</div></div></div>
+  <div class="ver">v0.14.4</div></div></div>
 <div id="pause" class="ov"><div class="card">
   <h1>Paused</h1><div id="pwho" class="sub" style="text-align:left"></div>
   <div class="pbtns"><button class="btn nav" id="presume">Resume</button><button class="btn nav ghost" id="pjournal">Journal</button><button class="btn nav ghost" id="pmap">Map</button><button class="btn nav ghost" id="pvil">Village</button>
-  <button class="btn nav ghost" id="pchar">Character</button><button class="btn nav ghost" id="pphoto">Photo mode</button><button class="btn nav ghost" id="pset">Settings</button><button class="btn nav ghost" id="pfull" style="display:none">Full screen</button><button class="btn nav ghost" id="ptitle">Title Screen</button></div></div></div>
+  <button class="btn nav ghost" id="pchar">Character</button><button class="btn nav ghost" id="pphoto">Photo mode</button><button class="btn nav ghost" id="palbum">Album</button><button class="btn nav ghost" id="pset">Settings</button><button class="btn nav ghost" id="pfull" style="display:none">Full screen</button><button class="btn nav ghost" id="ptitle">Title Screen</button></div></div></div>
 <div id="journal" class="ov"><div class="card">
   <h1 id="jtitle">Journal</h1><div id="jsum"></div>
   <div id="jpager"><button class="btn nav ghost" id="jprev">&lt; Back</button><div id="jpn"></div><button class="btn nav ghost" id="jnext">Next &gt;</button></div>
@@ -194,6 +197,9 @@ body.iso .req .rs{background:rgba(241,231,208,.1)}body.iso .req.done .rs{backgro
   <h2>Themes</h2><div class="three" id="bthemes"></div><div id="bearn" class="sub" style="text-align:left;margin-top:8px"></div>
   <button class="btn nav" id="bdone">Done</button></div></div>
 <div id="photo"><div id="phtop" class="pill"></div><div id="phbar"><button class="btn nav ghost" id="phf"></button><button class="btn nav ghost" id="phz"></button><button class="btn nav ghost" id="phh"></button><button class="btn nav ghost" id="phl"></button><button class="btn nav" id="phs">Take photo</button><button class="btn nav ghost" id="phx">Done</button></div></div>
+<div id="album" class="ov"><div class="card">
+  <h1>Photo album</h1><div id="alinfo" class="sub"></div><div id="algrid" class="grid"></div><img id="alview" alt="">
+  <div class="two"><button class="btn nav ghost" id="aldel">Remove photo</button><button class="btn nav" id="alclose">Close</button></div></div></div>
 <div id="confirm" class="ov"><div class="card">
   <div id="ctext"></div><button class="btn nav" id="cyes">OK</button><button class="btn nav ghost" id="cno">Cancel</button></div></div>
 <script>
@@ -891,7 +897,7 @@ const groundCv=[0,1].map(f=>mk(MW*T,MH*T,g=>{
 
 /* ---------- settings store ---------- */
 const CFG_KEY="wandervalley_cfg_v1";
-const CFG={amb:6,music:6,sfx:8,vib:1,stick:0,size:1,hand:0,zoom:1,dn:1,wx:1,season:0,compass:1,crisp:1,gfx:1,mood:0,run:0,pet:1,radar:0,ts:1,spk:0,font:1,slot:1,bind:{action:0,journal:3,menu:9,back:1,map:2,run:5}};
+const CFG={calm:0,plbl:0,bkt:0,amb:6,music:6,sfx:8,vib:1,stick:0,size:1,hand:0,zoom:1,dn:1,wx:1,season:0,compass:1,crisp:1,gfx:1,mood:0,run:0,pet:1,radar:0,ts:1,spk:0,font:1,slot:1,bind:{action:0,journal:3,menu:9,back:1,map:2,run:5}};
 (function(){try{const d=JSON.parse(localStorage.getItem(CFG_KEY)||"null");if(d){for(const k in CFG)if(k!=="bind"&&typeof d[k]==="number")CFG[k]=d[k];
   if(d.bind)for(const k in CFG.bind)if(typeof d.bind[k]==="number")CFG.bind[k]=d.bind[k]}}catch(e){}})();
 function saveCfg(){try{localStorage.setItem(CFG_KEY,JSON.stringify(CFG))}catch(e){}}
@@ -906,22 +912,24 @@ const slotKey=n=>n===1?SAVE_KEY:SAVE_KEY+"_s"+n;
 function load(){try{const d=JSON.parse(localStorage.getItem(slotKey(CFG.slot))||"null");if(d&&d.v===1){S.x=d.x;S.y=d.y;S.play=+d.play||0;if(d.home&&typeof d.home==="object")S.home={sh:d.home.sh||{},fu:d.home.fu||{},wall:(d.home.wall|0)%4,floor:(d.home.floor|0)%3};
   if(Array.isArray(d.garden))S.garden=[0,1,2,3,4,5].map(i=>{const p=d.garden[i];return p&&SEEDS.some(s=>s[0]===p.k)?{k:p.k,g:Math.max(0,Math.min(3,+p.g||0)),w:p.w|0}:null});S.rod=!!d.rod;S.net=!!d.net;(d.don||[]).forEach(id=>S.don[id]=1);(d.vil||[]).forEach(id=>S.vil[id]=1);S.boots=!!d.boots;S.pet=!!d.pet;S.signs=typeof d.signs==="number"?d.signs:31;S.bridge=!!d.bridge;S.shovel=!!d.shovel;S.lantern=!!d.lantern;S.clock=+d.clock||0;
   if(typeof d.seen==="string"&&d.seen.length===seen.length)for(let i=0;i<seen.length;i++)seen[i]=d.seen.charCodeAt(i)===49?1:0;else if(typeof d.seen==="string"&&d.seen.length===750)for(let i=0;i<750;i++)seen[i]=d.seen.charCodeAt(i)===49?1:0;else for(let r=0;r<15;r++)for(let c=0;c<15;c++)seen[r*30+c]=1;(d.found||[]).forEach(id=>S.found[id]=1);
-  S.started=d.started!==undefined?!!d.started:true;S.pn=cleanPet(d.pn);S.pin=typeof d.pin==="string"&&ITEMS.some(i=>i.id===d.pin&&!i.off)?d.pin:null;S.vl=vlFrom(d.vl);
+  S.started=d.started!==undefined?!!d.started:true;S.pn=cleanPet(d.pn);S.bkm=Math.max(0,+d.bkm||0);S.pin=typeof d.pin==="string"&&ITEMS.some(i=>i.id===d.pin&&!i.off)?d.pin:null;S.vl=vlFrom(d.vl);
   if(d.ch){for(const k in CHMAX)if(Number.isInteger(d.ch[k])&&d.ch[k]>=0&&d.ch[k]<CHMAX[k])S.ch[k]=d.ch[k];if(typeof d.ch.name==="string")S.ch.name=cleanName(d.ch.name)}}}catch(e){}}
 function cleanName(n){n=String(n).replace(/[\u0000-\u001f<>]/g,"").trim().slice(0,12);return n||"Robin"}
 function buildSprites(){pspr=[false,true].map(bt=>[0,1,2,3].map(d=>({f:[0,1,2,3].map(q=>playerFrame(d,q,false,bt,S.ch)),blink:playerFrame(d,0,true,bt,S.ch)})))}
-function save(){try{localStorage.setItem(slotKey(CFG.slot),JSON.stringify({v:1,x:Math.round(S.x),y:Math.round(S.y),boots:S.boots,play:Math.round(S.play),home:S.home,garden:S.garden,rod:S.rod,net:S.net,don:Object.keys(S.don),vil:Object.keys(S.vil),pet:S.pet,signs:S.signs,bridge:S.bridge,shovel:S.shovel,lantern:S.lantern,clock:Math.round(S.clock),seen:Array.from(seen).join(""),started:S.started,pin:S.pin||null,pn:S.pn||"",ch:S.ch,found:Object.keys(S.found),vl:S.vl}));S.dirty=false}catch(e){}}
+function save(){try{localStorage.setItem(slotKey(CFG.slot),JSON.stringify({v:1,x:Math.round(S.x),y:Math.round(S.y),boots:S.boots,play:Math.round(S.play),home:S.home,garden:S.garden,rod:S.rod,net:S.net,don:Object.keys(S.don),vil:Object.keys(S.vil),pet:S.pet,signs:S.signs,bridge:S.bridge,shovel:S.shovel,lantern:S.lantern,clock:Math.round(S.clock),seen:Array.from(seen).join(""),started:S.started,pin:S.pin||null,pn:S.pn||"",ch:S.ch,found:Object.keys(S.found),vl:S.vl,bkm:S.bkm||0,t:Date.now()}));S.dirty=false}catch(e){}}
 function afterLoad(){homeFix();buildSprites();bridgeOpen=S.bridge;if(Object.keys(S.found).length>=12)S.pet=true;for(const st of SETS){if(!ITEMS.some(i=>i.set===st.id)||!ITEMS.filter(i=>i.set===st.id).every(i=>S.found[i.id]))continue;S.boots=true;if(st.area==="autumn")S.lantern=true}UNLOCK.forEach(u=>{if(S.ch[u[0]]===u[1]&&!u[4]())S.ch[u[0]]=0});if(blocked(S.x,S.y)){S.x=START.x*T+8;S.y=START.y*T+10}}
-function fresh(){epoch++;S.pin=null;S.pn="";FB.on=false;S.vl=vlFrom(null);Object.assign(S,{x:START.x*T+8,y:START.y*T+10,dir:0,walk:0,vx:0,vy:0,moving:false,found:{},don:{},vil:{},home:{sh:{},fu:{0:"bed",1:"lamp",2:"table",4:"rug",5:"fern"},wall:0,floor:0},garden:[null,null,null,null,null,null],rod:false,net:false,boots:false,pet:false,signs:0,flash:0,play:0,bridge:false,shovel:false,lantern:false,clock:0,started:false,dirty:false});
+function fresh(){epoch++;S.pin=null;S.pn="";S.bkm=0;FB.on=false;S.vl=vlFrom(null);Object.assign(S,{x:START.x*T+8,y:START.y*T+10,dir:0,walk:0,vx:0,vy:0,moving:false,found:{},don:{},vil:{},home:{sh:{},fu:{0:"bed",1:"lamp",2:"table",4:"rug",5:"fern"},wall:0,floor:0},garden:[null,null,null,null,null,null],rod:false,net:false,boots:false,pet:false,signs:0,flash:0,play:0,bridge:false,shovel:false,lantern:false,clock:0,started:false,dirty:false});
   S.ch={name:"Robin",pro:0,body:0,skin:1,hs:0,hc:0,hat:0,shirt:0,bot:0,pc:0,eye:0,gl:0,face:0,pat:0,shoe:0,pack:0};seen.fill(0);PET.init=false}
 function useSlot(n){if(S.started)save();CFG.slot=n;saveCfg();fresh();load();afterLoad();hud();path=null;undoStack.length=0;refreshTitle()}
-function peekSlot(n){if(n===CFG.slot)return S.started?nm()+" "+Object.keys(S.found).length+"/"+ITEMS.length:"empty";try{const d=JSON.parse(localStorage.getItem(slotKey(n))||"null");if(d&&d.started)return ((d.ch&&d.ch.name)||"Robin")+" "+(d.found||[]).length+"/"+ITEMS.length}catch(e){}return "empty"}
+function agoStr(t){if(!t)return "";const q=(Date.now()-t)/1000;return q<90?"just now":q<3600?Math.round(q/60)+" min ago":q<86400?Math.round(q/3600)+" h ago":q<172800?"1 day ago":Math.round(q/86400)+" days ago"}
+function peekSlot(n){let d=null;try{d=JSON.parse(localStorage.getItem(slotKey(n))||"null")}catch(e){}const t=d&&d.t?" \u00b7 "+agoStr(d.t):"";
+  if(n===CFG.slot)return S.started?nm()+" "+Object.keys(S.found).length+"/"+ITEMS.length+t:"empty";if(d&&d.started)return ((d.ch&&d.ch.name)||"Robin")+" "+(d.found||[]).length+"/"+ITEMS.length+t;return "empty"}
 load();
 function raining(){const p=S.clock%780;return p>=420&&p<540}
 function avail(it){if(!it.when||donCount()>=6)return true;return it.when==="night"?(!CFG.dn||nightAmt()>0.5):(!CFG.wx||raining())}
 function speed(){return S.boots?((CFG.run||PAD.b[CFG.bind.run])?112:84):62}
 let MFR=null;const PET={x:0,y:0,left:false,walk:0,alert:false,init:false,mov:false};let fadeT=0,confT=0,epoch=0;const FXP=[];
-function burst(x,y,img){if(img)FXP.push({img,x:x,y:y,vx:0,vy:-24,t:0,life:0.75});const cs=["#ffffff","#f7d354","#ffd0e4","#8fd3e8"];for(let i=0;i<8;i++){const a=i/8*6.283;FXP.push({c:cs[i%4],x:x+5,y:y+5,vx:Math.cos(a)*26,vy:Math.sin(a)*26-10,t:0,life:0.45})}}
+function burst(x,y,img){if(img)FXP.push({img,x:x,y:y,vx:0,vy:-24,t:0,life:0.75});if(CFG.calm)return;const cs=["#ffffff","#f7d354","#ffd0e4","#8fd3e8"];for(let i=0;i<8;i++){const a=i/8*6.283;FXP.push({c:cs[i%4],x:x+5,y:y+5,vx:Math.cos(a)*26,vy:Math.sin(a)*26-10,t:0,life:0.45})}}
 let path=null,tapPt=null,ripT=0,radarT=0,stuckT=0,tapT=0;
 const AMB=[],RIP=[],CAM={x:0,y:0},BFC=["#f7d354","#ffffff","#e58fb4","#8fd3e8","#f2a93b"],LFC=["#d9483b","#e8883a","#f0c93f"];for(let i=0;i<6;i++)AMB.push({x:0,y:0,vx:0,vy:0,t:0,init:false});
 function nearItem(maxd){let best=null,bd=maxd;const rgN=region();for(const it of ITEMS){if(S.found[it.id]||it.off||!avail(it)||regAt(it.x,it.y)!==rgN)continue;const d=Math.hypot(it.x*T+8-S.x,it.y*T+8-S.y);if(d<bd){bd=d;best=it}}return best?{it:best,d:bd}:null}
@@ -1023,7 +1031,7 @@ const UL=()=>UNLOCK.map(u=>["New look unlocked: "+u[2],u[4]]).concat(FURN.filter
 function watchUnlocks(fn){const ul=UL(),was=ul.map(u=>u[1]());fn();let n=0;ul.forEach((u,i)=>{if(!was[i]&&u[1]())setTimeout(()=>toast(u[0]+"!"),2800+2600*n++)})}
 /* save backup: a text code that holds the current slot */
 const b64e=t=>btoa(unescape(encodeURIComponent(t))),b64d=t=>decodeURIComponent(escape(atob(t)));
-function makeBackup(){if(S.started)save();return "WV1:"+b64e(localStorage.getItem(slotKey(CFG.slot))||"{}")}
+function makeBackup(){CFG.bkt=Date.now();saveCfg();if(S.started)save();return "WV1:"+b64e(localStorage.getItem(slotKey(CFG.slot))||"{}")}
 function restoreBackup(code){code=String(code).replace(/\s+/g,"");if(code.slice(0,4)!=="WV1:")return "That is not a Helena Hollow backup code.";let d;
   try{d=JSON.parse(b64d(code.slice(4)))}catch(e){return "The code is damaged or incomplete."}
   if(!d||d.v!==1||!Array.isArray(d.found)||typeof d.x!=="number")return "The code is damaged or incomplete.";
@@ -1149,8 +1157,12 @@ function collect(it){if(S.found[it.id])return;if(S.pin===it.id)S.pin=null;watchU
     if(got.length)m+=" Reward: "+got.join(" and ")+".";
     else if(count()===ITEMS.length)m=nm()+" found all "+ITEMS.length+" treasures! Every corner is explored. More arrives in the next version.";
     else m+=" Nice work.";
+    const tip=backupTip();if(tip)m+="  "+tip;
     say(m);save()},700)}
   save()}
+/* v0.14.4: a gentle backup tip at a few set milestones, only if there has been no backup code in the last week */
+function backupTip(){const n=setsDone(),hit=[3,6,10,15,20,25].some(x=>x<=n&&x>(S.bkm||0));if(!hit)return "";S.bkm=n;S.dirty=true;if(Date.now()-(CFG.bkt||0)<7*864e5)return "";
+  return "Tip: your journal lives only on this device. Settings > Backup and restore gives you a code to keep somewhere safe."}
 function repairBridge(){S.bridge=true;bridgeOpen=true;S.dirty=true;sfx([60,64,67,72,76]);buzz(90);say("The bridge is repaired! The Autumn Woods wait across the river.");save()}
 function getShovel(){S.shovel=true;S.dirty=true;sfx([67,72,79]);buzz(60);say("Found an old shovel! Dig at dirt mounds to find buried relics.");save()}
 function enterCave(){hush();fadeT=0.4;S.x=CAVE_IN.x*T+8;S.y=CAVE_IN.y*T+10;S.dir=1;S.vx=S.vy=0;sfx([57,52],"sine");markSeen();toast("The cave. Sparkles show the way.")}
@@ -1164,7 +1176,7 @@ function markSeen(){const c=(S.x/T|0)>>2,r=(S.y/T|0)>>2;for(let dy=-3;dy<=3;dy++
 const stack=[];const topP=()=>stack[stack.length-1];let foc=null;const focMem={};
 function navEls(){const p=$(topP());return p?[...p.querySelectorAll(".nav")].filter(e=>e.offsetParent!==null):[]}
 function setFoc(e){if(foc)foc.classList.remove("foc");foc=e;if(e){e.classList.add("foc");if(e.scrollIntoView)e.scrollIntoView({block:"nearest"});focMem[topP()]=e;if(e.onfoc)e.onfoc()}}
-function openPanel(id){if(stack.includes(id))return;if(id==="map")buildMap();if(id==="museum")buildMuseum();if(id==="journal")buildJournal();if(id==="settings")refreshSettings();if(id==="builder")refreshBuilder();if(id==="pause")$("pwho").textContent=nm()+(S.ch.pro===3?"":" ("+PR.lab[S.ch.pro]+")")+". "+SEAS[season()]+". Played "+(S.play>=3600?Math.floor(S.play/3600)+" h "+Math.floor(S.play%3600/60)+" min":Math.floor(S.play/60)+" min")+".";
+function openPanel(id){if(stack.includes(id))return;if(id==="map")buildMap();if(id==="album")buildAlbum();if(id==="museum")buildMuseum();if(id==="journal")buildJournal();if(id==="settings")refreshSettings();if(id==="builder")refreshBuilder();if(id==="pause")$("pwho").textContent=nm()+(S.ch.pro===3?"":" ("+PR.lab[S.ch.pro]+")")+". "+SEAS[season()]+". Played "+(S.play>=3600?Math.floor(S.play/3600)+" h "+Math.floor(S.play%3600/60)+" min":Math.floor(S.play/60)+" min")+".";
   path=null;stickEnd();hush();if(id!=="title")$("toast").classList.remove("show");if(stack.length)$(topP()).style.visibility="hidden";stack.push(id);document.body.classList.add("panel");document.body.classList.toggle("ontitle",stack.includes("title"));$(id).style.display="flex";$(id).scrollTop=0;setFoc(navEls()[0]||null);sfx([79],"sine")}
 function closePanel(){if(!stack.length)return;const id=stack.pop();if(id==="photo"){PH.on=false;PHD=null;cv.style.filter="";resize()}document.body.classList.toggle("ontitle",stack.includes("title"));$(id).style.display="none";$(id).style.visibility="";if(stack.length)$(topP()).style.visibility="";else document.body.classList.remove("panel");if(PAD.listen){PAD.listen=null;refreshSettings()}
   if(id==="builder"){$("bname").blur();$("bpet").blur();S.pn=cleanPet($("bpet").value)||S.pn||"";S.ch.name=cleanName($("bname").value);save();if(builderNew){builderNew=false;setTimeout(()=>toast(PAD.on?"Stick to walk. Press "+BN[CFG.bind.action]+" near things.":"Drag to walk. Press A near things."),400)}}
@@ -1192,7 +1204,7 @@ function showTitle(){refreshTitle();openPanel("title")}
 $("tslot").adj=d=>{useSlot(((CFG.slot-1+d+3)%3)+1);sfx([86],"sine")};
 $("tslot").querySelectorAll(".pm")[0].addEventListener("click",()=>$("tslot").adj(-1));$("tslot").querySelectorAll(".pm")[1].addEventListener("click",()=>$("tslot").adj(1));
 let builderNew=false;
-function newGame(){epoch++;S.pin=null;S.pn="";FB.on=false;UNLOCK.forEach(u=>{if(S.ch[u[0]]===u[1])S.ch[u[0]]=0});S.play=0;S.found={};S.don={};S.vil={};S.home={sh:{},fu:{0:"bed",1:"lamp",2:"table",4:"rug",5:"fern"},wall:0,floor:0};S.garden=[null,null,null,null,null,null];homeFix();S.rod=S.net=false;F.on=false;S.boots=false;S.pet=false;S.signs=0;PET.init=false;S.bridge=bridgeOpen=false;S.shovel=false;S.lantern=false;S.clock=0;seen.fill(0);S.x=START.x*T+8;S.y=START.y*T+10;S.dir=0;S.started=true;buildSprites();save();hud();closeAll();builderNew=true;openPanel("builder")}
+function newGame(){epoch++;S.pin=null;S.pn="";S.bkm=0;FB.on=false;UNLOCK.forEach(u=>{if(S.ch[u[0]]===u[1])S.ch[u[0]]=0});S.play=0;S.found={};S.don={};S.vil={};S.home={sh:{},fu:{0:"bed",1:"lamp",2:"table",4:"rug",5:"fern"},wall:0,floor:0};S.garden=[null,null,null,null,null,null];homeFix();S.rod=S.net=false;F.on=false;S.boots=false;S.pet=false;S.signs=0;PET.init=false;S.bridge=bridgeOpen=false;S.shovel=false;S.lantern=false;S.clock=0;seen.fill(0);S.x=START.x*T+8;S.y=START.y*T+10;S.dir=0;S.started=true;buildSprites();save();hud();closeAll();builderNew=true;openPanel("builder")}
 $("tcont").addEventListener("click",()=>{closeAll()});
 $("tnew").addEventListener("click",()=>{if(S.started)ask("Start a new game? This erases your current save.","Start over",newGame);else newGame()});
 $("tset").addEventListener("click",()=>openPanel("settings"));
@@ -1220,11 +1232,24 @@ function phTick(dt){let dx=PAD.x,dy=PAD.y;if(keys.arrowleft||keys.a)dx-=1;if(key
 function phSnap(){try{const c=document.createElement("canvas");c.width=cv.width;c.height=cv.height;const g=c.getContext("2d"),f=PHF[PH.f][1];if(f&&("filter" in g))g.filter=f;g.drawImage(cv,0,0);g.filter="none";
     if(PH.label){const k=Math.max(1,Math.min(c.width,c.height)/500),t="Helena Hollow  \u00b7  "+region().name+"  \u00b7  Day "+day();g.font="600 "+Math.round(15*k)+"px system-ui,sans-serif";g.textAlign="right";g.fillStyle="rgba(0,0,0,.5)";g.fillText(t,c.width-14*k+1,c.height-14*k+1);g.fillStyle="rgba(255,244,220,.92)";g.fillText(t,c.width-14*k,c.height-14*k)}
     const n=new Date(),z=v=>String(v).padStart(2,"0"),name="HelenaHollow_"+n.getFullYear()+z(n.getMonth()+1)+z(n.getDate())+"_"+z(n.getHours())+z(n.getMinutes())+z(n.getSeconds())+".jpg",url=c.toDataURL("image/jpeg",0.92);
-    S.flash=1;sfx([96,100],"sine",0.05);buzz(30);
+    S.flash=1;sfx([96,100],"sine",0.05);buzz(30);albumAdd(c);
     if(window.Android&&Android.savePhoto){let r="";try{r=Android.savePhoto(url.split(",")[1],name)}catch(e){r="error"}toast(r==="ok"?"Photo saved to your gallery in Pictures/Helena Hollow.":r&&r!=="error"?"Photo saved "+r+".":"The photo could not be saved.")}
     else{const a=document.createElement("a");a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();toast("Photo saved to your downloads.")}}catch(e){toast("The photo could not be saved.")}}
 ["phf","phz","phh","phl","phs","phx"].forEach((id,i)=>$(id).addEventListener("click",[()=>phFilter(1),()=>phZoom(1),phHide,()=>{PH.label=!PH.label;phRefresh()},phSnap,()=>back()][i]));
 $("pphoto").addEventListener("click",openPhoto);
+/* v0.14.4 photo album: the last 12 photos, kept on this device as small copies. The full photo stays in the gallery. */
+const ALB_KEY="wandervalley_album_v1";let alSel=-1;
+function albumGet(){try{const a=JSON.parse(localStorage.getItem(ALB_KEY)||"[]");return Array.isArray(a)?a.filter(p=>p&&typeof p.u==="string"&&p.u.startsWith("data:image/")):[]}catch(e){return []}}
+function albumPut(a){for(let i=0;i<13;i++){try{localStorage.setItem(ALB_KEY,JSON.stringify(a));return true}catch(e){if(!a.length)return false;a.shift()}}return false}
+function albumAdd(c){try{const k=Math.min(1,480/c.width),t=document.createElement("canvas");t.width=Math.round(c.width*k);t.height=Math.round(c.height*k);t.getContext("2d").drawImage(c,0,0,t.width,t.height);
+  const a=albumGet();a.push({u:t.toDataURL("image/jpeg",0.72),d:region().name+", day "+day(),t:Date.now()});while(a.length>12)a.shift();albumPut(a)}catch(e){}}
+function buildAlbum(){const a=albumGet(),box=$("algrid");box.innerHTML="";alSel=-1;$("alview").style.display="none";$("aldel").style.display="none";
+  $("alinfo").textContent=a.length?"Your last "+a.length+" photo"+(a.length>1?"s":"")+". Pick one to see it larger. The full photos are in your gallery or downloads.":"No photos yet. Open Photo mode from the menu and take one.";
+  a.slice().reverse().forEach((p,j)=>{const i=a.length-1-j,d=document.createElement("div");d.className="slot nav";const im=document.createElement("img");im.src=p.u;im.alt="";d.appendChild(im);
+    const show=()=>{alSel=i;box.querySelectorAll(".slot").forEach(o=>o.classList.toggle("sel",o===d));const v=$("alview");v.src=p.u;v.style.display="block";$("aldel").style.display="";$("alinfo").textContent=p.d+" \u00b7 "+agoStr(p.t)+"."};
+    d.addEventListener("click",()=>{show();sfx([76],"sine")});d.onfoc=()=>{if(document.body.classList.contains("keymode"))show()};box.appendChild(d)})}
+$("palbum").addEventListener("click",()=>openPanel("album"));$("alclose").addEventListener("click",()=>closePanel());
+$("aldel").addEventListener("click",()=>{if(alSel<0)return;const i=alSel;ask("Remove this photo from the album? The full photo in your gallery stays.","Remove",()=>{const a=albumGet();a.splice(i,1);albumPut(a);buildAlbum();setFoc(navEls()[0]||null)})});
 $("pchar").addEventListener("click",()=>openPanel("builder"));$("pvil").addEventListener("click",openAlmanac);
 $("pset").addEventListener("click",()=>openPanel("settings"));
 $("ptitle").addEventListener("click",()=>{save();closeAll();showTitle()});
@@ -1395,15 +1420,23 @@ function drawPreview(){const bc=$("bcv");if(CFG.gfx===1){if(bc.width!==512){bc.w
 
 /* settings */
 const BN=["A","B","X","Y","LB","RB","LT","RT","Select","Start","L3","R3","Up","Down","Left","Right"];
+/* v0.14.4: button names follow the pad. Auto reads the controller name. Settings > Button labels overrides it. */
+const LBL={gen:BN.slice(),xbox:["A","B","X","Y","LB","RB","LT","RT","View","Menu","LS","RS","Up","Down","Left","Right"],
+  ps:["\u2715","\u25CB","\u25A1","\u25B3","L1","R1","L2","R2","Share","Options","L3","R3","Up","Down","Left","Right"],
+  nin:["B","A","Y","X","L","R","ZL","ZR","\u2212","+","LS","RS","Up","Down","Left","Right"]};
+const FAMN={gen:"Standard",xbox:"Xbox",ps:"PlayStation",nin:"Nintendo / Retroid"};
+function padFam(){if(CFG.plbl===1)return "xbox";if(CFG.plbl===2)return "ps";if(CFG.plbl===3)return "nin";const n=String(PAD.name||"").toLowerCase();
+  if(/retroid|nintendo|switch|joy-?con|pro controller/.test(n))return "nin";if(/xbox|xinput|microsoft|x-box/.test(n))return "xbox";if(/playstation|dualsense|dualshock|sony|wireless controller|ps[345]/.test(n))return "ps";return "gen"}
+function setBN(){const L=LBL[padFam()];for(let i=0;i<16;i++)BN[i]=L[i];if(typeof PAD!=="undefined"){hudLabels();if(topP()==="settings")refreshSettings()}}
 const TEN=[0,1,2,3,4,5,6,7,8,9,10];
 const OPTS=[{h:"Sound"},{k:"music",n:"Music",vals:TEN,clamp:1},{k:"sfx",n:"Sounds",vals:TEN,clamp:1},{k:"amb",n:"Ambience",vals:TEN,clamp:1},{k:"vib",n:"Vibration",vals:["Off","On"]},
   {h:"Touch controls"},{k:"stick",n:"Joystick",vals:["Floating","Fixed","Tap to walk"]},{k:"size",n:"Control size",vals:["Small","Medium","Large"]},{k:"hand",n:"Layout",vals:["Right hand","Left hand"]},
   {h:"Play"},{k:"run",n:"Auto-run",vals:["Off","On"]},{k:"radar",n:"Treasure radar",vals:["Off","On"]},{k:"compass",n:"Compass dots on map",vals:["Off","On"]},{k:"pet",n:"Companion",vals:["Off","Dog","Cat"]},
-  {h:"Display"},{k:"gfx",n:"Graphics",vals:["Pixel","Angled"]},{k:"mood",n:"Mood",vals:["Moody","Bright"]},{k:"crisp",n:"Pixel outlines",vals:["Off","On"]},{k:"zoom",n:"Camera",vals:["Close","Normal","Wide"]},{k:"dn",n:"Day and night",vals:["Off","On"]},{k:"wx",n:"Rain",vals:["Off","On"]},{k:"season",n:"Season",vals:["Cycle","Spring","Summer","Autumn","Winter"]},{k:"ts",n:"Text size",vals:["Small","Normal","Large"]},{k:"spk",n:"Sparkles",vals:["Classic","Bold","Blue","Pink"]},{k:"font",n:"Font",vals:["Pixel","Classic"]},
-  {h:"Controller"},{stat:1},{b:"action",n:"Action / Confirm"},{b:"journal",n:"Journal"},{b:"map",n:"Map"},{b:"run",n:"Run (hold)"},{b:"menu",n:"Menu / Pause"},{b:"back",n:"Back / Cancel"},{reset:1},{h:"Save data"},{backup:1}];
+  {h:"Display"},{k:"gfx",n:"Graphics",vals:["Pixel","Angled"]},{k:"mood",n:"Mood",vals:["Moody","Bright"]},{k:"crisp",n:"Pixel outlines",vals:["Off","On"]},{k:"zoom",n:"Camera",vals:["Close","Normal","Wide"]},{k:"dn",n:"Day and night",vals:["Off","On"]},{k:"wx",n:"Rain",vals:["Off","On"]},{k:"season",n:"Season",vals:["Cycle","Spring","Summer","Autumn","Winter"]},{k:"ts",n:"Text size",vals:["Small","Normal","Large"]},{k:"spk",n:"Sparkles",vals:["Classic","Bold","Blue","Pink"]},{k:"font",n:"Font",vals:["Pixel","Classic"]},{k:"calm",n:"Reduce motion",vals:["Off","On"]},
+  {h:"Controller"},{stat:1},{k:"plbl",n:"Button labels",vals:["Auto","Xbox","PlayStation","Nintendo / Retroid"]},{b:"action",n:"Action / Confirm"},{b:"journal",n:"Journal"},{b:"map",n:"Map"},{b:"run",n:"Run (hold)"},{b:"menu",n:"Menu / Pause"},{b:"back",n:"Back / Cancel"},{reset:1},{h:"Save data"},{backup:1}];
 const srefresh=[];
-function applyLook(){document.body.classList.toggle("iso",CFG.gfx===1);document.body.classList.toggle("pixfont",CFG.font===0);document.documentElement.style.setProperty("--ts",[1,1.15,1.32][CFG.ts]);document.documentElement.style.setProperty("--ui",Math.max(1,Math.min(1.6,Math.min(innerWidth,innerHeight)/720)).toFixed(3))}
-function applyCfg(k){saveCfg();applyLook();if(k==="pet")PET.init=false;if(k==="music"||k==="sfx")auVol();if(k==="sfx")sfx([81]);if(k==="vib"&&CFG.vib)buzz(40);if(k==="zoom"||k==="gfx")resize();else layoutTouch();if(k==="floor")ICACHE.clear();hudLabels()}
+function applyLook(){document.body.classList.toggle("iso",CFG.gfx===1);document.body.classList.toggle("calm",CFG.calm===1);document.body.classList.toggle("pixfont",CFG.font===0);document.documentElement.style.setProperty("--ts",[1,1.15,1.32][CFG.ts]);document.documentElement.style.setProperty("--ui",Math.max(1,Math.min(1.6,Math.min(innerWidth,innerHeight)/720)).toFixed(3))}
+function applyCfg(k){saveCfg();applyLook();if(k==="plbl")setBN();if(k==="pet")PET.init=false;if(k==="music"||k==="sfx")auVol();if(k==="sfx")sfx([81]);if(k==="vib"&&CFG.vib)buzz(40);if(k==="zoom"||k==="gfx")resize();else layoutTouch();if(k==="floor")ICACHE.clear();hudLabels()}
 (function buildSettings(){const box=$("srows");
   OPTS.forEach(o=>{
     if(o.h){const h=document.createElement("h2");h.textContent=o.h;box.appendChild(h);return}
@@ -1419,7 +1452,7 @@ function applyCfg(k){saveCfg();applyLook();if(k==="pet")PET.init=false;if(k==="m
     r.adj=(d,wrap)=>{const n=o.vals.length;let v=CFG[o.k]+d;if(o.clamp&&!wrap)v=Math.max(0,Math.min(n-1,v));else v=(v+n)%n;if(v===CFG[o.k])return;CFG[o.k]=v;applyCfg(o.k);refreshSettings()};
     r.children[1].addEventListener("click",()=>r.adj(-1,false));r.children[3].addEventListener("click",()=>r.adj(1,false));
     srefresh.push(()=>{r.children[2].textContent=o.vals[CFG[o.k]]});box.appendChild(r)})})();
-function refreshSettings(){srefresh.forEach(f=>f());$("padstat").textContent=PAD.name?"Connected: "+PAD.name.slice(0,48):"No controller found yet. Press any button on it. Pick a row below, then press the button you want."}
+function refreshSettings(){srefresh.forEach(f=>f());$("padstat").textContent=PAD.name?"Connected: "+PAD.name.slice(0,48)+". "+FAMN[padFam()]+" button names.":"No controller found yet. Press any button on it. Pick a row below, then press the button you want."}
 function setBind(n,i){const old=CFG.bind[n];for(const k in CFG.bind)if(CFG.bind[k]===i)CFG.bind[k]=old;CFG.bind[n]=i;PAD.listen=null;applyCfg();refreshSettings();sfx([84,88])}
 function hudLabels(){$("jbtn").textContent=PAD.on?BN[CFG.bind.journal]+" Journal":"Journal";$("mbtn").textContent=PAD.on?BN[CFG.bind.menu]+" Menu":"Menu";$("mapbtn").textContent=PAD.on?BN[CFG.bind.map]+" Map":"Map"}
 
@@ -1440,7 +1473,7 @@ function pollPad(dt){const b=PAD.b,prev=PAD.p;for(let i=0;i<16;i++){prev[i]=b[i]
   try{const gps=navigator.getGamepads?navigator.getGamepads():[];for(const gp of gps){if(!gp||!gp.connected)continue;if(!name)name=gp.id;
     for(let i=0;i<16&&i<gp.buttons.length;i++){const q=gp.buttons[i];if(q&&(q.pressed||q.value>0.5))b[i]=true}
     const gx=gp.axes[0]||0,gy=gp.axes[1]||0;if(Math.hypot(gx,gy)>Math.hypot(ax,ay)){ax=gx;ay=gy}}}catch(e){}
-  if(name!==PAD.name){PAD.name=name;if(topP()==="settings")refreshSettings()}
+  if(name!==PAD.name){PAD.name=name;setBN()}
   const m=Math.hypot(ax,ay),dz=0.22;if(m<dz){ax=ay=0}else{const k=Math.min(1,(m-dz)/(1-dz))/m;ax*=k;ay*=k}
   PAD.x=ax+(b[15]?1:0)-(b[14]?1:0);PAD.y=ay+(b[13]?1:0)-(b[12]?1:0);
   if(b.some(v=>v)||m>=dz){if(!PAD.on)setPad(true);auInit()}
@@ -2381,10 +2414,10 @@ function renderIso(){
 }
 
 let last=performance.now();
-function frame(now){if(PH.on)phTick(Math.max(0,Math.min(0.05,(now-last)/1000)));const dt=Math.max(0,Math.min(0.05,(now-last)/1000));last=now;if(fadeT>0)fadeT=Math.max(0,fadeT-dt);if(confT>0)confT=Math.max(0,confT-dt);for(let i=FXP.length-1;i>=0;i--){const p=FXP[i];p.t+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.t>p.life)FXP.splice(i,1)}pollPad(dt);update(dt);ambTick(dt);if(CFG.gfx===1)renderIso();else render();if(topP()==="builder")drawPreview();else if(topP()==="map")drawMap();requestAnimationFrame(frame)}
-afterLoad();applyLook();emblem($("temb").getContext("2d"),256,0,1.12);addEventListener("resize",resize);resize();hud();hudLabels();showTitle();requestAnimationFrame(frame);
+function frame(now){if(PH.on)phTick(Math.max(0,Math.min(0.05,(now-last)/1000)));const dt=Math.max(0,Math.min(0.05,(now-last)/1000));last=now;if(CFG.calm){confT=0;if(S.flash>0.25)S.flash=0.25;if(fadeT>0.15)fadeT=0.15}if(fadeT>0)fadeT=Math.max(0,fadeT-dt);if(confT>0)confT=Math.max(0,confT-dt);for(let i=FXP.length-1;i>=0;i--){const p=FXP[i];p.t+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.t>p.life)FXP.splice(i,1)}pollPad(dt);update(dt);ambTick(dt);if(CFG.gfx===1)renderIso();else render();if(topP()==="builder")drawPreview();else if(topP()==="map")drawMap();requestAnimationFrame(frame)}
+afterLoad();applyLook();setBN();emblem($("temb").getContext("2d"),256,0,1.12);addEventListener("resize",resize);resize();hud();hudLabels();showTitle();requestAnimationFrame(frame);
 window.__safe=(t,r,b,l)=>{setSA(t,r,b,l);layoutTouch();if(topP()==="map")requestAnimationFrame(fitMap)};
-window.__game={VIC,vicon,reqList,REQ,placeName,travelTo,PETN,cleanPet,SA,setSA,CLEARED,CASES,MUS_IN,CURATOR,exhibit,enterMuseum,AS,ambTick,EXN,PH,FB,hintFor,pinSpot,togglePin,throwBall,openPhoto,phSnap,deep:()=>({PIT,PIT_OUT,BRAM,DEEP_IN,DLAD}),caveRg,PROPS,STOVE,BENCH,RECIPES,CRAFTS,vl,day,hearts,totalHearts,festNow,merchantOpen,propAct,openStove,openBench,openBoard,openCart,readMail,petAnimal,dishCount,hintText,emblem,ip:(x,y)=>ip(x,y),isoState:()=>({IK,ICX,ICY,n:ICACHE.size}),makeBackup,restoreBackup,FXP,VIL,ARCH,BOAT,DBOAT,SNOW_IN,DES_IN,season,regAt,hop,talk,REG,DISP,FSLOT,GARD,FURN,HOME_IN,region,tendPlot,enterHome,F,MUS,ROD,NET,donate,waterAhead,PET,TUNNELS,avail,findPath,getPath:()=>path,useSlot,UNLOCK,RIP,AMB,nearest,wob,S,ITEMS,SIGNS,SETS,solidTile,collect,T,CFG,PAD,stack,NP,reachFrom,ground,obj,MW,MH,SHOVEL,CAVE_IN,BRX,BRIDGE_Y,seen,openBridge:v=>{bridgeOpen=v},sprites:()=>pspr,playerFrame};
+window.__game={padFam,setBN,LBL,albumGet,albumAdd,backupTip,peekSlot,agoStr,VIC,vicon,reqList,REQ,placeName,travelTo,PETN,cleanPet,SA,setSA,CLEARED,CASES,MUS_IN,CURATOR,exhibit,enterMuseum,AS,ambTick,EXN,PH,FB,hintFor,pinSpot,togglePin,throwBall,openPhoto,phSnap,deep:()=>({PIT,PIT_OUT,BRAM,DEEP_IN,DLAD}),caveRg,PROPS,STOVE,BENCH,RECIPES,CRAFTS,vl,day,hearts,totalHearts,festNow,merchantOpen,propAct,openStove,openBench,openBoard,openCart,readMail,petAnimal,dishCount,hintText,emblem,ip:(x,y)=>ip(x,y),isoState:()=>({IK,ICX,ICY,n:ICACHE.size}),makeBackup,restoreBackup,FXP,VIL,ARCH,BOAT,DBOAT,SNOW_IN,DES_IN,season,regAt,hop,talk,REG,DISP,FSLOT,GARD,FURN,HOME_IN,region,tendPlot,enterHome,F,MUS,ROD,NET,donate,waterAhead,PET,TUNNELS,avail,findPath,getPath:()=>path,useSlot,UNLOCK,RIP,AMB,nearest,wob,S,ITEMS,SIGNS,SETS,solidTile,collect,T,CFG,PAD,stack,NP,reachFrom,ground,obj,MW,MH,SHOVEL,CAVE_IN,BRX,BRIDGE_Y,seen,openBridge:v=>{bridgeOpen=v},sprites:()=>pspr,playerFrame};
 </script>
 </body>
 </html>
