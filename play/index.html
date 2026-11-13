@@ -132,7 +132,7 @@ body.calm #jsets.flipR,body.calm #jsets.flipL{animation:none}body.calm #toast{tr
 #count{left:calc(0.625rem + var(--sl));top:calc(0.625rem + var(--st))}
 #hudr{right:calc(0.625rem + var(--sr));top:calc(0.625rem + var(--st))}
 #abtn{right:calc(22px + var(--sr));bottom:calc(34px + var(--sb))}body.lefty #abtn{right:auto;left:calc(22px + var(--sl))}
-#dialog{left:calc(12px + var(--sl));right:calc(12px + var(--sr));bottom:calc(140px + var(--sb))}
+#dialog{left:calc(12px + var(--sl));right:calc(12px + var(--sr));bottom:auto;top:calc(3.75rem + var(--st));z-index:7}
 #toast{top:calc(3.75rem + var(--st))}
 .ov{padding:calc(0.75rem + var(--st)) calc(0.75rem + var(--sr)) calc(0.75rem + var(--sb)) calc(0.75rem + var(--sl))}
 body.iso #title{padding:var(--st) var(--sr) var(--sb) var(--sl)}
@@ -156,7 +156,7 @@ body.iso .req .rs{background:rgba(241,231,208,.1)}body.iso .req.done .rs{backgro
   <button class="btn nav" id="tcont">Continue</button><button class="btn nav" id="tnew">Start</button>
   <div class="srow nav" id="tslot"><span class="nm" style="flex:0 0 auto">Save</span><button class="pm">&lt;</button><span class="val" id="tslotv"></span><button class="pm">&gt;</button></div>
   <button class="btn nav ghost" id="tset">Settings</button><button class="btn nav ghost" id="tfull" style="display:none">Full screen</button><button class="btn nav ghost" id="tquit">Quit</button>
-  <div class="ver">v0.14.5</div></div></div>
+  <div class="ver">v0.14.6</div></div></div>
 <div id="pause" class="ov"><div class="card">
   <h1>Paused</h1><div id="pwho" class="sub" style="text-align:left"></div>
   <div class="pbtns"><button class="btn nav" id="presume">Resume</button><button class="btn nav ghost" id="pjournal">Journal</button><button class="btn nav ghost" id="pmap">Map</button><button class="btn nav ghost" id="pvil">Village</button>
@@ -1147,9 +1147,11 @@ function readSA(){const p=$("saprobe");if(!p)return;const c=getComputedStyle(p);
 function setSA(t,r,b,l){const st=document.documentElement.style;[["--ast",t],["--asr",r],["--asb",b],["--asl",l]].forEach(q=>st.setProperty(q[0],Math.max(0,Math.min(160,+q[1]||0))+"px"));readSA()}
 function pullSA(){try{if(window.Android&&Android.safeArea){const a=String(Android.safeArea()).split(",").map(Number);if(a.length===4&&a.every(isFinite)){setSA(a[0],a[1],a[2],a[3]);return}}}catch(e){}readSA()}
 function hud(){$("count").textContent=count()+"/"+ITEMS.length+(innerWidth<400?"":" found")}
-let toastT=0;function toast(m){const t=$("toast");t.textContent=m;{const h=$("hudr").getBoundingClientRect(),c=$("count").getBoundingClientRect();t.style.top=(document.body.classList.contains("panel")||!h.height?"":Math.round(Math.max(h.bottom,c.bottom)+8)+"px")}t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2600)}
-let dlg=null;function say(m){$("dtext").textContent=m;$("dhint").textContent=PAD.on?"Press "+BN[CFG.bind.action]+" to close":"Tap to close";$("dialog").style.display="block";dlg={x:S.x,y:S.y}}
-function hush(){$("dialog").style.display="none";dlg=null}
+let toastT=0;function toast(m){const t=$("toast");t.textContent=m;placeMsgs();t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2600)}
+function placeMsgs(){const t=$("toast"),d=$("dialog"),h=$("hudr").getBoundingClientRect(),c=$("count").getBoundingClientRect(),top=document.body.classList.contains("panel")||!h.height?null:Math.round(Math.max(h.bottom,c.bottom)+8);
+  d.style.top=top===null?"":top+"px";const dv=d.style.display==="block";t.style.top=dv?Math.round(d.getBoundingClientRect().bottom+8)+"px":top===null?"":top+"px"}
+let dlg=null;function say(m){$("dtext").textContent=m;$("dhint").textContent=PAD.on?"Press "+BN[CFG.bind.action]+" to close":"Tap to close";$("dialog").style.display="block";dlg={x:S.x,y:S.y};placeMsgs()}
+function hush(){$("dialog").style.display="none";dlg=null;placeMsgs()}
 $("dialog").addEventListener("pointerdown",e=>{e.stopPropagation();hush()});
 
 function collect(it){if(S.found[it.id])return;if(!it.wild&&!it.gift){if(CFG.dn&&nightAmt()>0.5)S.sc.nt=1;if(CFG.wx&&raining())S.sc.rn=1}if(S.pin===it.id)S.pin=null;watchUnlocks(()=>{S.found[it.id]=1});if(it.off)burst(S.x-5,S.y-34,it.img);else burst(it.x*T+3,it.y*T+2,it.img);S.dirty=true;hud();sfx([76,81,88]);buzz(25);
