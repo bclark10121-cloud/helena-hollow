@@ -155,8 +155,8 @@ body.iso .req .rs{background:rgba(241,231,208,.1)}body.iso .req.done .rs{backgro
   <canvas id="temb" width="256" height="256"></canvas><h1 class="logo">Helena Hollow</h1><div class="sub">A quiet treasure hunt</div><div id="tgap"></div>
   <button class="btn nav" id="tcont">Continue</button><button class="btn nav" id="tnew">Start</button>
   <div class="srow nav" id="tslot"><span class="nm" style="flex:0 0 auto">Save</span><button class="pm">&lt;</button><span class="val" id="tslotv"></span><button class="pm">&gt;</button></div>
-  <button class="btn nav ghost" id="tset">Settings</button><button class="btn nav ghost" id="tfull" style="display:none">Full screen</button><button class="btn nav ghost" id="tquit">Quit</button>
-  <div class="ver">v0.14.6</div></div></div>
+  <button class="btn nav ghost" id="txmas">Christmas theme: Off</button><button class="btn nav ghost" id="tset">Settings</button><button class="btn nav ghost" id="tfull" style="display:none">Full screen</button><button class="btn nav ghost" id="tquit">Quit</button>
+  <div class="ver">v0.14.7</div></div></div>
 <div id="pause" class="ov"><div class="card">
   <h1>Paused</h1><div id="pwho" class="sub" style="text-align:left"></div>
   <div class="pbtns"><button class="btn nav" id="presume">Resume</button><button class="btn nav ghost" id="pjournal">Journal</button><button class="btn nav ghost" id="pmap">Map</button><button class="btn nav ghost" id="pvil">Village</button>
@@ -904,7 +904,7 @@ const groundCv=[0,1].map(f=>mk(MW*T,MH*T,g=>{
 
 /* ---------- settings store ---------- */
 const CFG_KEY="wandervalley_cfg_v1";
-const CFG={calm:0,plbl:0,bkt:0,amb:6,music:6,sfx:8,vib:1,stick:0,size:1,hand:0,zoom:1,dn:1,wx:1,season:0,compass:1,crisp:1,gfx:1,mood:0,run:0,pet:1,radar:0,ts:1,spk:0,font:1,slot:1,bind:{action:0,journal:3,menu:9,back:1,map:2,run:5}};
+const CFG={xmas:0,calm:0,plbl:0,bkt:0,amb:6,music:6,sfx:8,vib:1,stick:0,size:1,hand:0,zoom:1,dn:1,wx:1,season:0,compass:1,crisp:1,gfx:1,mood:0,run:0,pet:1,radar:0,ts:1,spk:0,font:1,slot:1,bind:{action:0,journal:3,menu:9,back:1,map:2,run:5}};
 (function(){try{const d=JSON.parse(localStorage.getItem(CFG_KEY)||"null");if(d){for(const k in CFG)if(k!=="bind"&&typeof d[k]==="number")CFG[k]=d[k];
   if(d.bind)for(const k in CFG.bind)if(typeof d.bind[k]==="number")CFG.bind[k]=d.bind[k]}}catch(e){}})();
 function saveCfg(){try{localStorage.setItem(CFG_KEY,JSON.stringify(CFG))}catch(e){}}
@@ -1149,7 +1149,7 @@ function pullSA(){try{if(window.Android&&Android.safeArea){const a=String(Androi
 function hud(){$("count").textContent=count()+"/"+ITEMS.length+(innerWidth<400?"":" found")}
 let toastT=0;function toast(m){const t=$("toast");t.textContent=m;placeMsgs();t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2600)}
 function placeMsgs(){const t=$("toast"),d=$("dialog"),h=$("hudr").getBoundingClientRect(),c=$("count").getBoundingClientRect(),top=document.body.classList.contains("panel")||!h.height?null:Math.round(Math.max(h.bottom,c.bottom)+8);
-  d.style.top=top===null?"":top+"px";const dv=d.style.display==="block";t.style.top=dv?Math.round(d.getBoundingClientRect().bottom+8)+"px":top===null?"":top+"px"}
+  d.style.top=top===null?"":top+"px";const dv=d.style.display==="block";t.style.top=dv?Math.round(d.getBoundingClientRect().bottom+8)+"px":top===null?"":(top+26)+"px"}
 let dlg=null;function say(m){$("dtext").textContent=m;$("dhint").textContent=PAD.on?"Press "+BN[CFG.bind.action]+" to close":"Tap to close";$("dialog").style.display="block";dlg={x:S.x,y:S.y};placeMsgs()}
 function hush(){$("dialog").style.display="none";dlg=null;placeMsgs()}
 $("dialog").addEventListener("pointerdown",e=>{e.stopPropagation();hush()});
@@ -1174,7 +1174,8 @@ function backupTip(){const n=setsDone(),hit=[3,6,10,15,20,25].some(x=>x<=n&&x>(S
   return "Tip: your journal lives only on this device. Settings > Backup and restore gives you a code to keep somewhere safe."}
 /* v0.14.5 real calendar touches: snow over the title screen in December, falling leaves and pumpkins in October */
 function calMonth(){return typeof window.__month==="number"?window.__month:new Date().getMonth()}
-function calTitle(){if(stack[0]!=="title")return;const m=calMonth();if(m!==9&&m!==11)return;const W=cv.width,H=cv.height,k=Math.max(1,Math.min(W,H)/400);cx.save();cx.setTransform(1,0,0,1,0,0);
+function xmasSnow(){const W=cv.width,H=cv.height,k=Math.max(1,Math.min(W,H)/400);cx.save();cx.setTransform(1,0,0,1,0,0);cx.fillStyle="rgba(255,255,255,.8)";for(let i=0;i<(CFG.calm?24:60);i++){const sp=0.035+(hash(i,3)%100)/1800,x=((hash(i,1)%1000)/1000*W+Math.sin(S.t*0.6+i)*12*k)%W,y=((hash(i,2)%1000)/1000+S.t*sp)%1*H,r=(0.8+hash(i,4)%3*0.5)*k;cx.beginPath();cx.arc(x,y,r,0,6.3);cx.fill()}cx.restore()}
+function calTitle(){if(stack[0]!=="title"){if(CFG.xmas&&!PH.snap){const r=region();if(!caveRg(r)&&!indoor(r))xmasSnow()}return}const m=CFG.xmas?11:calMonth();if(m!==9&&m!==11)return;const W=cv.width,H=cv.height,k=Math.max(1,Math.min(W,H)/400);cx.save();cx.setTransform(1,0,0,1,0,0);
   if(m===11){cx.fillStyle="rgba(255,255,255,.85)";for(let i=0;i<90;i++){const sp=0.04+(hash(i,3)%100)/1500,x=((hash(i,1)%1000)/1000*W+Math.sin(S.t*0.7+i)*14*k)%W,y=((hash(i,2)%1000)/1000+S.t*sp)%1*H,r=(1+hash(i,4)%3)*k;cx.beginPath();cx.arc(x,y,r,0,6.3);cx.fill()}}
   else{const cs=["#e8883a","#d9483b","#f0c93f"];for(let i=0;i<34;i++){const sp=0.03+(hash(i,5)%100)/2500,x=((hash(i,6)%1000)/1000*W+Math.sin(S.t*0.9+i)*24*k)%W,y=((hash(i,7)%1000)/1000+S.t*sp)%1*H;cx.save();cx.translate(x,y);cx.rotate(S.t*1.5+i);cx.fillStyle=cs[i%3];cx.beginPath();cx.ellipse(0,0,5*k,2.5*k,0,0,6.3);cx.fill();cx.restore()}
     for(let i=0;i<3;i++){const px=(0.08+i*0.09)*W,py=H-(0.07+(i%2)*0.02)*H,s=(14+i*3)*k;for(const o of [-0.55,0.55])cx.fillStyle="#c9661e",cx.beginPath(),cx.ellipse(px+o*s*0.6,py,s*0.55,s*0.75,0,0,6.3),cx.fill();cx.fillStyle="#f0882a";cx.beginPath();cx.ellipse(px,py,s*0.6,s*0.8,0,0,6.3);cx.fill();cx.fillStyle="#4a6a2a";cx.fillRect(px-s*0.08,py-s*1.05,s*0.16,s*0.3);
@@ -1216,7 +1217,8 @@ $("cyes").addEventListener("click",()=>{const f=askFn;askFn=null;closePanel();if
 $("cno").addEventListener("click",()=>{askFn=null;closePanel()});
 
 /* title and pause */
-function refreshTitle(){const has=S.started;$("tcont").style.display=has?"":"none";$("tnew").textContent=has?"New Game":"Start";$("tslotv").textContent="Slot "+CFG.slot+": "+peekSlot(CFG.slot)}
+function refreshTitle(){$("txmas").textContent="Christmas theme: "+(CFG.xmas?"On":"Off");const has=S.started;$("tcont").style.display=has?"":"none";$("tnew").textContent=has?"New Game":"Start";$("tslotv").textContent="Slot "+CFG.slot+": "+peekSlot(CFG.slot)}
+$("txmas").addEventListener("click",()=>{CFG.xmas=CFG.xmas?0:1;applyCfg("xmas");refreshTitle();sfx(CFG.xmas?[72,76,79,84]:[72],"sine")});
 function showTitle(){refreshTitle();openPanel("title")}
 $("tslot").adj=d=>{useSlot(((CFG.slot-1+d+3)%3)+1);sfx([86],"sine")};
 $("tslot").querySelectorAll(".pm")[0].addEventListener("click",()=>$("tslot").adj(-1));$("tslot").querySelectorAll(".pm")[1].addEventListener("click",()=>$("tslot").adj(1));
@@ -1466,11 +1468,11 @@ const TEN=[0,1,2,3,4,5,6,7,8,9,10];
 const OPTS=[{h:"Sound"},{k:"music",n:"Music",vals:TEN,clamp:1},{k:"sfx",n:"Sounds",vals:TEN,clamp:1},{k:"amb",n:"Ambience",vals:TEN,clamp:1},{k:"vib",n:"Vibration",vals:["Off","On"]},
   {h:"Touch controls"},{k:"stick",n:"Joystick",vals:["Floating","Fixed","Tap to walk"]},{k:"size",n:"Control size",vals:["Small","Medium","Large"]},{k:"hand",n:"Layout",vals:["Right hand","Left hand"]},
   {h:"Play"},{k:"run",n:"Auto-run",vals:["Off","On"]},{k:"radar",n:"Treasure radar",vals:["Off","On"]},{k:"compass",n:"Compass dots on map",vals:["Off","On"]},{k:"pet",n:"Companion",vals:["Off","Dog","Cat"]},
-  {h:"Display"},{k:"gfx",n:"Graphics",vals:["Pixel","Angled"]},{k:"mood",n:"Mood",vals:["Moody","Bright"]},{k:"crisp",n:"Pixel outlines",vals:["Off","On"]},{k:"zoom",n:"Camera",vals:["Close","Normal","Wide"]},{k:"dn",n:"Day and night",vals:["Off","On"]},{k:"wx",n:"Rain",vals:["Off","On"]},{k:"season",n:"Season",vals:["Cycle","Spring","Summer","Autumn","Winter"]},{k:"ts",n:"Text size",vals:["Small","Normal","Large"]},{k:"spk",n:"Sparkles",vals:["Classic","Bold","Blue","Pink"]},{k:"font",n:"Font",vals:["Pixel","Classic"]},{k:"calm",n:"Reduce motion",vals:["Off","On"]},
+  {h:"Display"},{k:"gfx",n:"Graphics",vals:["Pixel","Angled"]},{k:"mood",n:"Mood",vals:["Moody","Bright"]},{k:"crisp",n:"Pixel outlines",vals:["Off","On"]},{k:"zoom",n:"Camera",vals:["Close","Normal","Wide"]},{k:"dn",n:"Day and night",vals:["Off","On"]},{k:"wx",n:"Rain",vals:["Off","On"]},{k:"season",n:"Season",vals:["Cycle","Spring","Summer","Autumn","Winter"]},{k:"ts",n:"Text size",vals:["Small","Normal","Large"]},{k:"spk",n:"Sparkles",vals:["Classic","Bold","Blue","Pink"]},{k:"font",n:"Font",vals:["Pixel","Classic"]},{k:"calm",n:"Reduce motion",vals:["Off","On"]},{k:"xmas",n:"Christmas theme",vals:["Off","On"]},
   {h:"Controller"},{stat:1},{k:"plbl",n:"Button labels",vals:["Auto","Xbox","PlayStation","Nintendo / Retroid"]},{b:"action",n:"Action / Confirm"},{b:"journal",n:"Journal"},{b:"map",n:"Map"},{b:"run",n:"Run (hold)"},{b:"menu",n:"Menu / Pause"},{b:"back",n:"Back / Cancel"},{reset:1},{h:"Save data"},{backup:1}];
 const srefresh=[];
 function applyLook(){document.body.classList.toggle("iso",CFG.gfx===1);document.body.classList.toggle("calm",CFG.calm===1);document.body.classList.toggle("pixfont",CFG.font===0);document.documentElement.style.setProperty("--ts",[1,1.15,1.32][CFG.ts]);document.documentElement.style.setProperty("--ui",Math.max(1,Math.min(1.6,Math.min(innerWidth,innerHeight)/720)).toFixed(3))}
-function applyCfg(k){saveCfg();applyLook();if(k==="plbl")setBN();if(k==="pet")PET.init=false;if(k==="music"||k==="sfx")auVol();if(k==="sfx")sfx([81]);if(k==="vib"&&CFG.vib)buzz(40);if(k==="zoom"||k==="gfx")resize();else layoutTouch();if(k==="floor")ICACHE.clear();hudLabels()}
+function applyCfg(k){saveCfg();applyLook();if(k==="plbl")setBN();if(k==="pet")PET.init=false;if(k==="music"||k==="sfx")auVol();if(k==="sfx")sfx([81]);if(k==="vib"&&CFG.vib)buzz(40);if(k==="zoom"||k==="gfx")resize();else layoutTouch();if(k==="floor"||k==="xmas")ICACHE.clear();hudLabels()}
 (function buildSettings(){const box=$("srows");
   OPTS.forEach(o=>{
     if(o.h){const h=document.createElement("h2");h.textContent=o.h;box.appendChild(h);return}
@@ -1771,6 +1773,19 @@ const IOBJ={
  15:()=>{ishadow(14,5,24,9,0.45);ig.strokeStyle="#7a5236";ig.lineWidth=5;ig.lineCap="round";ig.beginPath();ig.moveTo(0,2);ig.quadraticCurveTo(5,-30,-2,-60);ig.stroke();ig.lineWidth=3.5;for(const a of [-2.7,-2.1,-1.2,-0.5,0.2,-3.4]){ig.strokeStyle=a<-1.6?"#2f7a3d":"#4fa34a";ig.beginPath();ig.moveTo(-2,-60);ig.quadraticCurveTo(-2+Math.cos(a)*16,-60+Math.sin(a)*16-6,-2+Math.cos(a)*30,-60+Math.sin(a)*22+8);ig.stroke()}},
  16:()=>{ishadow(6,3,14,5,0.4);irr(-4.5,-38,9,40,4.5,ilin(-5,0,5,0,"#5aa862","#24512e"));irr(-14,-26,5,13,2.5,"#3f8a4a");ig.fillStyle="#3f8a4a";ig.fillRect(-12,-17,9,4);irr(9,-30,5,13,2.5,"#3f8a4a");ig.fillRect(4,-21,8,4);ig.fillStyle="#ff5fa0";ig.beginPath();ig.arc(0,-39,2.6,0,6.3);ig.fill()}};
 function icry(a,b){ishadow(4,3,14,5,0.4);for(const s of [[-8,-16,5],[7,-19,5],[0,-30,6.5]])ipoly([[s[0]-s[2],2],[s[0]-s[2],s[1]*0.6],[s[0],s[1]],[s[0]+s[2],s[1]*0.6],[s[0]+s[2],2]],ilin(s[0]-s[2],0,s[0]+s[2],0,a,b))}
+/* v0.14.7 Christmas theme: ornaments and stars on trees, bows on signs, lights and wreaths on buildings, little gift trees in every area */
+const XC=["#e23d3d","#f7d354","#4b8be8","#ffffff","#f58fb4","#5fd08a"];
+function xball(x,y,r,i){iball(x,y,r,XC[i%XC.length],shade(XC[i%XC.length]==="#ffffff"?"#b9c6d8":XC[i%XC.length],0.55));ig.fillStyle="rgba(255,255,255,.8)";ig.beginPath();ig.arc(x-r*0.3,y-r*0.35,r*0.28,0,6.3);ig.fill()}
+function xstar(x,y,r){const p=[];for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,q=i%2?r*0.45:r;p.push([x+Math.cos(a)*q,y+Math.sin(a)*q])}ipoly(p,"#ffe27a","#b98a1c")}
+function xwreath(x,y,r){ig.strokeStyle="#2f7a3d";ig.lineWidth=r*0.55;ig.beginPath();ig.arc(x,y,r,0,6.3);ig.stroke();ig.strokeStyle="#4fa34a";ig.lineWidth=r*0.2;ig.beginPath();ig.arc(x,y,r,0,6.3);ig.stroke();for(let i=0;i<5;i++){ig.fillStyle="#e23d3d";ig.beginPath();ig.arc(x+Math.cos(i*1.257)*r,y+Math.sin(i*1.257)*r,r*0.2,0,6.3);ig.fill()}ipoly([[x,y+r*0.8],[x-r*0.7,y+r*1.5],[x-r*0.1,y+r*1.2]],"#e23d3d");ipoly([[x,y+r*0.8],[x+r*0.7,y+r*1.5],[x+r*0.1,y+r*1.2]],"#e23d3d")}
+function xlights(a,b,n,sag){for(let i=0;i<=n;i++){const u=i/n,x=a[0]+(b[0]-a[0])*u,y=a[1]+(b[1]-a[1])*u+Math.sin(u*Math.PI)*sag;ig.fillStyle=XC[i%XC.length];ig.beginPath();ig.arc(x,y,2.1,0,6.3);ig.fill();ig.fillStyle="rgba(255,255,255,.45)";ig.beginPath();ig.arc(x,y,4,0,6.3);ig.globalAlpha=0.25;ig.fill();ig.globalAlpha=1}}
+const XDECO={1:()=>{[[-14,-36],[10,-30],[0,-52],[18,-40],[-6,-24],[-20,-26],[6,-44]].forEach((p,i)=>xball(p[0],p[1],3,i))},
+  4:()=>{[[-10,-16],[8,-20],[-5,-32],[9,-36],[-3,-46],[4,-56],[14,-12],[-15,-12]].forEach((p,i)=>xball(p[0],p[1],2.7,i));xstar(0,-79,6)},
+  15:()=>{[[-14,-52],[10,-56],[-2,-48],[18,-46],[-22,-44]].forEach((p,i)=>xball(p[0],p[1],2.8,i))},
+  16:()=>{[[0,-24],[-11,-22],[11,-26],[0,-10]].forEach((p,i)=>xball(p[0],p[1],2.4,i))},
+  9:()=>{[[-2,-10],[2,-18],[-1,-26]].forEach((p,i)=>xball(p[0],p[1],2,i))}};
+XDECO[5]=XDECO[6]=XDECO[7]=XDECO[1];XDECO[12]=XDECO[4];
+for(const k in XDECO){const f=IOBJ[k];IOBJ[k]=()=>{f();if(CFG.xmas)XDECO[k]()}}
 const iobj=o=>isp("o"+o,110,124,52,104,IOBJ[o]);
 const IPROP={
  sign:()=>{ishadow(4,2,10,4,0.4);ig.fillStyle="#4a3424";ig.fillRect(-1.5,-20,3,22);irr(-11,-31,22,13,2,ilin(0,-31,0,-18,"#c99a5e","#8a5f3c"));ig.fillStyle="rgba(50,30,15,.6)";ig.fillRect(-7,-27,14,1.6);ig.fillRect(-7,-23.5,10,1.6)},
@@ -1820,6 +1835,12 @@ const IPROP={
    for(const r of [[1.72,0.1,7],[3.3,0.08,8],[1.5,0.05,5],[3.62,0.05,5]]){const c=q(r[0],d+r[1],0);iball(c[0],c[1]-r[2]*0.5,r[2],"#a9a3b2","#4a4554")}
    const sm=(x,y)=>{const r=Math.hypot((x-2.35)/2.55,(y-1.05)/1.85);return Math.max(0,1-r*r)*H};
    for(const t of [[0.7,2.25],[4.25,2.05],[4.6,1.2]]){const b=q(t[0],t[1],sm(t[0],t[1])),hh=24;for(let k=0;k<3;k++){const y0=b[1]-k*7,wd=9-k*2.4;ipoly([[b[0]-wd,y0],[b[0]+wd,y0],[b[0],y0-hh*0.55]],k%2?"#2f6b4a":"#24563c")}ig.fillStyle="#4a3424";ig.fillRect(b[0]-1.2,b[1],2.4,4)}}};
+{const f=IPROP.sign;IPROP.sign=()=>{f();if(CFG.xmas){ipoly([[0,-33],[-8,-39],[-8,-29]],"#e23d3d");ipoly([[0,-33],[8,-39],[8,-29]],"#e23d3d");iball(0,-33,2.2,"#ff7a7a","#a81f1f")}};
+ for(const [k,B,h] of [["cabin",CABIN,1.55],["museum",MUS,1.7],["cave",CAVE,1.3]]){const g=IPROP[k];IPROP[k]=()=>{g();if(!CFG.xmas)return;const w=B.w,d=B.h;if(k!=="cave")xlights(ip(0,d,h),ip(w,d,h),16,5);if(k!=="cave")xlights(ip(w,d,h),ip(w,0,h),10,4);const c=ip(k==="cave"?2.5:w/2,d,k==="cave"?1.45:h*0.72);xwreath(c[0],c[1],k==="cave"?6:7)}}}
+IPROP.xtree=()=>{ishadow(4,3,22,8,0.45);ig.fillStyle="#2e2018";ig.fillRect(-2.5,-8,5,10);for(let i=0;i<3;i++){const yy=-6-i*13,w=17-i*4.5;ipoly([[-w,yy],[w,yy],[0,yy-22]],ilin(-w,0,w,0,"#3f8a5a","#14301f"))}
+  [[-8,-10],[7,-12],[-4,-22],[6,-26],[-1,-36],[11,-8],[-12,-8]].forEach((p,i)=>xball(p[0],p[1],2.4,i));xstar(0,-56,5.5);
+  for(const b of [[-20,0,"#e23d3d","#f7d354"],[16,2,"#4b8be8","#ffffff"],[-9,6,"#5fd08a","#e23d3d"]]){irr(b[0]-6,b[1]-9,12,10,1.5,b[2]);ig.fillStyle=b[3];ig.fillRect(b[0]-1,b[1]-9,2,10);ig.fillRect(b[0]-6,b[1]-5,12,2)}};
+const XSPOTS=[];
 const iprop=(k,w,h,ax,ay)=>isp("p"+k,w||90,h||100,ax||45,ay||86,IPROP[k]);
 /* cabin furniture as simple shaded boxes */
 const IFURN={bed:f=>{ibox(0.08,0.1,0.92,0.95,0,0.3,"#3b6fd4","#2a4f9c","#22407e");ibox(0.08,0.1,0.92,0.36,0.3,0.42,"#ffffff","#d9d4c8","#bdb7ae");ibox(0.05,0.03,0.95,0.12,0,0.75,"#8a5f3c","#6a4530","#4a2f1e")},
@@ -2149,6 +2170,10 @@ const VIC=(function(){
   const out={};for(const k in F)out[k]=(ctx)=>{g=ctx;g.save();F[k]();g.restore();g=null};return out})();
 /* draws a treasure icon on a 96 x 96 canvas, with a soft ground shadow so it reads on any background */
 function vicon(id){const c=document.createElement("canvas");c.width=c.height=96;const x=c.getContext("2d");x.scale(1.5,1.5);x.lineCap="round";x.lineJoin="round";VIC[id](x);return c}
+(function(){const want=[[START.x+3,START.y+1],[MUS.x+6,MUS.y+MUS.h+1],[33,47],[62,31],[88,40],[CAVE_IN.x+2,CAVE_IN.y-2],[20,80],[DEEP_IN.x+2,DEEP_IN.y+2],[104,84],[SNOW_IN.x+3,SNOW_IN.y-2],[30,118],[DES_IN.x+3,DES_IN.y-1],[96,116],[HOME_IN.x-5,HOME_IN.y-4],[MUS_IN.x+5,MUS_IN.y-1]];
+  const used=new Set();ITEMS.forEach(i=>{if(!i.off)used.add(I(i.x,i.y))});
+  for(const w of want){const rg=regAt(w[0],w[1]);let best=null,bd=1e9;for(let dy=-5;dy<=5;dy++)for(let dx=-5;dx<=5;dx++){const x=w[0]+dx,y=w[1]+dy;if(x<1||y<1||x>=MW-1||y>=MH-1||regAt(x,y)!==rg||solidTile(x,y)||used.has(I(x,y))||ground[I(x,y)]===2)continue;const d=Math.hypot(dx,dy);if(d<bd){bd=d;best=[x,y]}}
+    if(best){XSPOTS.push({x:best[0],y:best[1],rg});used.add(I(best[0],best[1]))}}})();
 /* v0.14.5 wildlife: 14 animals wander near a home spot. Take their picture in photo mode to add them to the Wildlife Album. */
 const CRIT=[["w_rabbit","rabbit",REG.over,20,40,[0]],["w_squirrel","squirrel",REG.over,30,12,[0]],["w_frog","frog",REG.over,30,33,[0,3]],["w_heron","heron",REG.over,24,52,[0,2,3]],["w_gull","gull",REG.over,44,55,[2,3]],
   ["w_deer","deer",REG.over,82,20,[5]],["w_fox","fox",REG.over,100,36,[5]],["w_owl","owl",REG.over,36,16,[0],1],["w_hare","hare",REG.snow,22,122,[12,13,14]],["w_ibex","ibex",REG.snow,44,112,[12,13,14]],
@@ -2437,6 +2462,7 @@ function renderIso(){
   if(out)for(const s of SIGNS){if(regAt(s.x,s.y)!==rg)continue;prop("sign",s.x+0.5,s.y+0.5,s.x+s.y+1)}
   if(ow)vilIso(prop,lights,marks,dep);
   if(!onT)critIso(rg,vw,vh,dep,marks);
+  if(CFG.xmas)for(const q of XSPOTS){if(q.rg!==rg||solidTile(q.x,q.y))continue;const c=ip(q.x+0.5,q.y+0.5);if(c[0]<-60||c[0]>vw+60||c[1]<-40||c[1]>vh+80)continue;prop("xtree",q.x+0.5,q.y+0.5,q.x+q.y+1);lights.push([c[0],c[1]-24,70,0.8])}
   for(const it of ITEMS){if(S.found[it.id]||it.rock||it.off||regAt(it.x,it.y)!==rg||!avail(it))continue;const c=ip(it.x+0.5,it.y+0.5);if(c[0]<-40||c[0]>vw+40||c[1]<-40||c[1]>vh+60)continue;
     if(it.dig){prop("mound",it.x+0.5,it.y+0.5,it.x+it.y+1);continue}if(it.photo){prop("cam",it.x+0.5,it.y+0.5,it.x+it.y+1);lights.push([c[0],c[1]-20,55,0.6]);continue}
     const bx=it.bug?Math.sin(S.t*1.3+it.x)*9:0,by=it.bug?Math.cos(S.t*1.7+it.y)*4:0,bob=Math.sin(S.t*2.6+it.x)*2.5;
@@ -2494,7 +2520,7 @@ let last=performance.now();
 function frame(now){if(PH.on)phTick(Math.max(0,Math.min(0.05,(now-last)/1000)));const dt=Math.max(0,Math.min(0.05,(now-last)/1000));last=now;if(CFG.calm){confT=0;if(S.flash>0.25)S.flash=0.25;if(fadeT>0.15)fadeT=0.15}if(fadeT>0)fadeT=Math.max(0,fadeT-dt);if(confT>0)confT=Math.max(0,confT-dt);for(let i=FXP.length-1;i>=0;i--){const p=FXP[i];p.t+=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;if(p.t>p.life)FXP.splice(i,1)}pollPad(dt);update(dt);ambTick(dt);if(CFG.gfx===1)renderIso();else render();calTitle();if(topP()==="builder")drawPreview();else if(topP()==="map")drawMap();requestAnimationFrame(frame)}
 afterLoad();applyLook();setBN();emblem($("temb").getContext("2d"),256,0,1.12);addEventListener("resize",resize);resize();hud();hudLabels();showTitle();requestAnimationFrame(frame);
 window.__safe=(t,r,b,l)=>{setSA(t,r,b,l);layoutTouch();if(topP()==="map")requestAnimationFrame(fitMap)};
-window.__game={CRIT,spotCrit,updateCrit,STAMPS,stampHas,stampSync,calTitle,calMonth,padFam,setBN,LBL,albumGet,albumAdd,backupTip,peekSlot,agoStr,VIC,vicon,reqList,REQ,placeName,travelTo,PETN,cleanPet,SA,setSA,CLEARED,CASES,MUS_IN,CURATOR,exhibit,enterMuseum,AS,ambTick,EXN,PH,FB,hintFor,pinSpot,togglePin,throwBall,openPhoto,phSnap,deep:()=>({PIT,PIT_OUT,BRAM,DEEP_IN,DLAD}),caveRg,PROPS,STOVE,BENCH,RECIPES,CRAFTS,vl,day,hearts,totalHearts,festNow,merchantOpen,propAct,openStove,openBench,openBoard,openCart,readMail,petAnimal,dishCount,hintText,emblem,ip:(x,y)=>ip(x,y),isoState:()=>({IK,ICX,ICY,n:ICACHE.size}),makeBackup,restoreBackup,FXP,VIL,ARCH,BOAT,DBOAT,SNOW_IN,DES_IN,season,regAt,hop,talk,REG,DISP,FSLOT,GARD,FURN,HOME_IN,region,tendPlot,enterHome,F,MUS,ROD,NET,donate,waterAhead,PET,TUNNELS,avail,findPath,getPath:()=>path,useSlot,UNLOCK,RIP,AMB,nearest,wob,S,ITEMS,SIGNS,SETS,solidTile,collect,T,CFG,PAD,stack,NP,reachFrom,ground,obj,MW,MH,SHOVEL,CAVE_IN,BRX,BRIDGE_Y,seen,openBridge:v=>{bridgeOpen=v},sprites:()=>pspr,playerFrame};
+window.__game={XSPOTS,XDECO,CRIT,spotCrit,updateCrit,STAMPS,stampHas,stampSync,calTitle,calMonth,padFam,setBN,LBL,albumGet,albumAdd,backupTip,peekSlot,agoStr,VIC,vicon,reqList,REQ,placeName,travelTo,PETN,cleanPet,SA,setSA,CLEARED,CASES,MUS_IN,CURATOR,exhibit,enterMuseum,AS,ambTick,EXN,PH,FB,hintFor,pinSpot,togglePin,throwBall,openPhoto,phSnap,deep:()=>({PIT,PIT_OUT,BRAM,DEEP_IN,DLAD}),caveRg,PROPS,STOVE,BENCH,RECIPES,CRAFTS,vl,day,hearts,totalHearts,festNow,merchantOpen,propAct,openStove,openBench,openBoard,openCart,readMail,petAnimal,dishCount,hintText,emblem,ip:(x,y)=>ip(x,y),isoState:()=>({IK,ICX,ICY,n:ICACHE.size}),makeBackup,restoreBackup,FXP,VIL,ARCH,BOAT,DBOAT,SNOW_IN,DES_IN,season,regAt,hop,talk,REG,DISP,FSLOT,GARD,FURN,HOME_IN,region,tendPlot,enterHome,F,MUS,ROD,NET,donate,waterAhead,PET,TUNNELS,avail,findPath,getPath:()=>path,useSlot,UNLOCK,RIP,AMB,nearest,wob,S,ITEMS,SIGNS,SETS,solidTile,collect,T,CFG,PAD,stack,NP,reachFrom,ground,obj,MW,MH,SHOVEL,CAVE_IN,BRX,BRIDGE_Y,seen,openBridge:v=>{bridgeOpen=v},sprites:()=>pspr,playerFrame};
 </script>
 </body>
 </html>
