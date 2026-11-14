@@ -1148,8 +1148,11 @@ function setSA(t,r,b,l){const st=document.documentElement.style;[["--ast",t],["-
 function pullSA(){try{if(window.Android&&Android.safeArea){const a=String(Android.safeArea()).split(",").map(Number);if(a.length===4&&a.every(isFinite)){setSA(a[0],a[1],a[2],a[3]);return}}}catch(e){}readSA()}
 function hud(){$("count").textContent=count()+"/"+ITEMS.length+(innerWidth<400?"":" found")}
 let toastT=0;function toast(m){const t=$("toast");t.textContent=m;placeMsgs();t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),2600)}
-function placeMsgs(){const t=$("toast"),d=$("dialog"),h=$("hudr").getBoundingClientRect(),c=$("count").getBoundingClientRect(),top=document.body.classList.contains("panel")||!h.height?null:Math.round(Math.max(h.bottom,c.bottom)+8);
-  d.style.top=top===null?"":top+"px";const dv=d.style.display==="block";t.style.top=dv?Math.round(d.getBoundingClientRect().bottom+8)+"px":top===null?"":(top+26)+"px"}
+function placeMsgs(){const t=$("toast"),d=$("dialog"),h=$("hudr").getBoundingClientRect(),c=$("count").getBoundingClientRect(),min=Math.round(Math.max(h.bottom,c.bottom)+8),line=Math.round(innerHeight*0.4);
+  if(document.body.classList.contains("panel")||!h.height){d.style.top="";t.style.top="";return}
+  /* the block grows upward from a line 40 percent down, so text ends just above the character and never covers it */
+  const dv=d.style.display==="block",dh=dv?d.getBoundingClientRect().height:0,dt=Math.max(min,line-dh);d.style.top=dt+"px";
+  const th=t.getBoundingClientRect().height||36;t.style.top=(dv?(dt-th-8>=min?dt-th-8:dt+dh+8):Math.max(min,line-th))+"px"}
 let dlg=null;function say(m){$("dtext").textContent=m;$("dhint").textContent=PAD.on?"Press "+BN[CFG.bind.action]+" to close":"Tap to close";$("dialog").style.display="block";dlg={x:S.x,y:S.y};placeMsgs()}
 function hush(){$("dialog").style.display="none";dlg=null;placeMsgs()}
 $("dialog").addEventListener("pointerdown",e=>{e.stopPropagation();hush()});
