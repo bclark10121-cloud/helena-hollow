@@ -1,4 +1,4 @@
-# Helena Hollow
+# Keeper of the Hollow
 
 A quiet exploration game for Android. No combat, no timers, no way to lose.
 
