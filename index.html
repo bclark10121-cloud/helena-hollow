@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Keeper of the Hollow</title><link rel="icon" href="icon.png">
-<meta name="description" content="Keeper of the Hollow is a quiet exploration game for Android. No combat, no timers, no way to lose.">
+<meta name="description" content="Keeper of the Hollow is a quiet 3D quest for Android and the browser. Find the shards of the Waylight. No combat, no timers, no way to lose.">
 <style>
 :root{--ink:#f1e7d0;--gold:#e9b755;--bg:#0b0e14;--card:#161a26}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 700px at 50% -10%,#2a2440 0%,#141a2a 45%,var(--bg) 100%) fixed;color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
@@ -15,6 +15,7 @@ a.btn{display:inline-block;padding:13px 22px;border-radius:12px;font-weight:700;
 a.primary{background:#c98a2e;color:#1b1820}a.ghost{background:rgba(241,231,208,.1);color:var(--ink);border-color:rgba(241,231,208,.3)}
 a.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .note{font-size:13px;opacity:.7;text-align:center}
+.news{max-width:620px;margin:18px auto 0;font-size:14px;text-align:left;background:rgba(241,231,208,.06);border:1px solid rgba(241,231,208,.16);border-radius:14px;padding:12px 18px}.news .ver{margin:0 0 4px;font-weight:700;color:var(--gold);text-align:center}.news ul{margin:4px 0 8px}.news li{margin:2px 0}.news p{margin:4px 0;text-align:center}.news a{color:var(--ink)}
 .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0}
 .shots img{width:100%;border-radius:14px;border:1px solid rgba(241,231,208,.2);display:block}
 h2{font-family:Georgia,serif;color:var(--gold);font-size:24px;margin:34px 0 10px}
@@ -23,24 +24,40 @@ h2{font-family:Georgia,serif;color:var(--gold);font-size:24px;margin:34px 0 10px
 .card b{color:var(--gold)}ol,ul{padding-left:20px;margin:6px 0}footer{margin-top:40px;font-size:13px;opacity:.65;text-align:center}
 @media (max-width:560px){.shots{grid-template-columns:1fr 1fr}.shots img:last-child{display:none}}
 </style></head><body><main>
-<header><img src="icon.png" alt="Keeper of the Hollow icon: a lantern on a forest trail"><h1>Keeper of the Hollow</h1><div class="tag">A quiet treasure hunt</div>
-<p class="lead">Wander meadows, autumn woods, a cave, a hidden underground lake, snowy peaks and a desert canyon by lantern light. Find 134 treasures. Make friends. Take your time.</p>
-<div class="cta"><a class="btn primary" href="play/">Play in your browser</a><a class="btn ghost" href="downloads/HelenaHollow-v0.14.8.apk">Download for Android (APK)</a><a class="btn ghost" href="3d/">Try the 3D preview in your browser</a></div>
-<p class="note">Version 0.14.8 test build. New: messages sit closer to your character, a Christmas theme in Settings, and the <a href="3d/" style="color:inherit">3D preview v0.11.1</a> with all ten neighbors as new 3D models, fishing with a real rod and cast, moodier light, auto pickup, a cabin stove and furniture, trail lamps, seed puffs, a summit logbook, treasure maps, bell festivals and swimming (<a href="downloads/HelenaHollow3D-v0.11.1.apk" style="color:inherit">Android APK</a>). Browser play works best on a phone or with a keyboard (WASD or arrows, E to act, F for full screen). <a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/releases" style="color:inherit">All versions and release notes</a>.</p></header>
-<div class="shots"><img src="shot-start.jpg" alt="Start screen: a lantern-lit cabin at night"><img src="shot-festival.jpg" alt="A festival at the notice board by the museum"><img src="shot-snow.jpg" alt="Snowy Peaks with pines and a lamp post"></div>
+<header><img src="icon.png" alt="Keeper of the Hollow icon: a lantern on a forest trail"><h1>Keeper of the Hollow</h1><div class="tag">A quiet quest</div>
+<p class="lead">A storm broke the Waylight into ten shards. Princess Elowen calls for help up the Old Well. You are the small keeper who answers. Wander six lands, find 148 treasures, make friends and take your time.</p>
+<div class="cta"><a class="btn primary" href="3d/">Play in your browser</a><a class="btn ghost" href="downloads/KeeperOfTheHollow-v0.12.apk">Download for Android (APK)</a></div>
+<div class="news"><p class="ver">Version 3D v0.12 test build</p>
+<ul><li>The Waylight story: seven story cards, Princess Elowen at the Old Well and six guardians who each hold a shard.</li>
+<li>Anna's trail: echoes in the Old Well, neighbor stories, keepsakes, nine well stones and an old camp.</li>
+<li>New neighbors: every person is a new character with real motions. They wave, cheer, dig, fish and sit on benches.</li>
+<li>A new speech box with the speaker's name, and one Menu button in the top right corner.</li>
+<li>The traveling merchant, notice board bundles that mend the Old Well and a Christmas theme switch.</li>
+<li>A Full screen button in the browser.</li></ul>
+<p><a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/releases">All versions and release notes</a></p></div></header>
+<div class="shots"><img src="shot-story.jpg" alt="A story card: the Long Night storm breaks the Waylight into ten shards"><img src="shot-talk.jpg" alt="Mira says hello in the speech box by the cabin"><img src="shot-christmas.jpg" alt="The cabin at night with the Christmas theme on"></div>
+<h2>The story</h2>
+<p>High on Hollow Mountain stood the Waylight, a great lantern every traveler steered home by. Anna, the first lamp keeper, lit it long ago. Last autumn the Long Night storm blew it out and scattered its glass across the Hollow. Princess Elowen grew faint as the light failed. She called down the palace well for help, and her voice came up in the Old Well, where you were drawing water. You are one of the Thimblefolk: small, fond of supper and not at all keen on adventures. You heard her anyway.</p>
+<p>Nobody fights. Each shard has a guardian who asks a favor or a riddle, and the answer is always something you find. The princess says it herself: take your time.</p>
 <h2>What kind of game is this?</h2>
 <div class="grid">
-<div class="card"><b>No combat.</b> No enemies, no health bars, no boss fights.</div>
+<div class="card"><b>No combat.</b> No enemies, no health bars, no boss fights. Guardians ask riddles.</div>
 <div class="card"><b>No limits.</b> Unlimited bag. No energy bar. No timers.</div>
-<div class="card"><b>No way to lose.</b> A miss never costs you anything.</div>
-<div class="card"><b>Finding is the reward.</b> Treasures, fish, bugs, crops, recipes and friends.</div>
+<div class="card"><b>No way to lose.</b> A wrong answer gets a hint and another try.</div>
+<div class="card"><b>Finding is the reward.</b> Treasures, shards, fish, bugs, crops, recipes and friends.</div>
 </div>
 <h2>Things to do</h2>
-<ul><li>Explore six regions and fill your journal.</li><li>Climb down to the Deep Cave, an old mine and an underground lake.</li><li>Fish, catch bugs and grow a garden.</li><li>Donate sets to the museum, then walk its hall and see every case.</li><li>Take photos with filters in photo mode.</li><li>Play fetch with your companion and see what it brings back.</li><li>Pin a missing treasure and follow the hint.</li><li>Decorate your cabin.</li><li>Cook on your stove and share dishes with neighbors.</li><li>Join a festival every season and visit the traveling merchant.</li><li>Befriend the hen, the duck and the goat.</li></ul>
+<ul><li>Follow the princess's voice and win six shards of the Waylight from six guardians.</li><li>Listen at the Old Well. Each set on display in the museum wakes an echo of the Hollow.</li><li>Get to know ten neighbors. Hear their stories, follow their keepsakes and read Anna's well stones.</li><li>Explore six lands: meadows, autumn woods, a cave, the Deep Cave, snowy peaks and a desert canyon.</li><li>Climb Hollow Mountain, glide down and sign the summit logbook.</li><li>Fish, catch bugs and grow a garden.</li><li>Donate sets to the museum, then walk its hall.</li><li>Cook at the cabin stove, furnish your cabin and trade with the traveling merchant.</li><li>Finish the notice board bundles and the village mends the Old Well.</li><li>Play fetch with Ninja the cat or Cooper the dog.</li><li>Ring the bell for a festival. Switch on the Christmas theme.</li></ul>
+<h2>Controls</h2>
+<ul><li><b>Keyboard:</b> WASD or arrows to walk, Space to jump and glide, E to act, J for the journal, M for the map, Q and R to turn the view, P for photos, Esc for settings.</li>
+<li><b>Controller:</b> left stick to walk, A to jump, X to act, Y for the journal, Back for the map, the shoulder buttons to turn the view, Start for settings.</li>
+<li><b>Touch:</b> drag on the left to walk, drag on the right to look, Jump and Act buttons on the right. The Menu button in the top right corner opens the map, the journal and settings.</li></ul>
 <h2>Install on Android</h2>
-<ol><li>Tap <b>Download for Android</b>.</li><li>Open the downloaded file.</li><li>If Android asks, allow installs from this source.</li><li>Tap Install, then open the game. This test build still shows the earlier name, Helena Hollow, on your phone and on its title screen. The next build carries the new name.</li></ol>
+<ol><li>Tap <b>Download for Android</b>.</li><li>Open the downloaded file.</li><li>If Android asks, allow installs from this source.</li><li>Tap Install, then open the game. It installs over earlier 3D builds and keeps your save.</li></ol>
 <p class="note">Android may show a Play Protect notice for apps from outside the Play Store. Touch and controllers both work.</p>
+<h2>The original 2D game</h2>
+<p>The first version of the game, in a pixel and an angled view, stays here until it moves to its own page. It still shows its earlier name, Helena Hollow, on its title screen. <a href="play/" style="color:var(--gold)">Play it in your browser</a> or <a href="downloads/HelenaHollow-v0.14.8.apk" style="color:var(--gold)">download v0.14.8 for Android</a>.</p>
 <h2>Feedback wanted</h2>
-<ul><li>Anything confusing in the first five minutes</li><li>Any spot where you got stuck</li><li>How walking and controls feel</li><li>Your phone model if you see lag</li></ul>
+<ul><li>Anything confusing in the first five minutes</li><li>Any spot where you got stuck</li><li>Any part of the story that is unclear</li><li>How walking and controls feel</li><li>Your phone model if you see lag</li></ul>
 <footer>Made by Brian Clark. Early test build, so expect rough edges. <a href="privacy.html" style="color:inherit">Privacy policy</a></footer>
 </main></body></html>
