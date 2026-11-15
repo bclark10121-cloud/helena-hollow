@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-15 with 3D v0.13. Brian decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
+Updated 2026-11-15 with 3D v0.13 and the split. Brian decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
 
 ## Done
 
@@ -8,10 +8,11 @@ Updated 2026-11-15 with 3D v0.13. Brian decides the order. The full history, eve
 - 3D v0.1 to v0.11.1 (Godot): six lands with height, glide and climb, 148 finds in 28 sets, museum, cabin, garden, fishing, companions, neighbors, festivals, treasure maps.
 - 3D v0.12 The Waylight (2026-11-14): renamed to Keeper of the Hollow. The Waylight story with Princess Elowen, six shards and six guardians. Anna's trail. The speech box and the pill look on all text. One corner Menu button. The KayKit cast and real motions, sitting on benches included. The traveling merchant, bundles that mend the Old Well and the Christmas theme. Brian's game standards added.
 - 3D v0.13 Closer camera (2026-11-15): Close and low is the new default camera, with Classic, Closer and Diorama in Settings > Camera. Name labels shrink up close. Esc, View, Menu and phone Back toggle the Menu row (G5.1). M opens the Map. Play with only an Xbox controller: A chooses, B goes back, View and Menu open the row (G5.8). Test hooks only with `?test` (G7.8). The wave and animal fixes. Title tag "A cozy quest". Shared kit 1.5.0.
+- The split (2026-11-15): the 2D game left this repo. Its pixel view is Pixel Hollow (https://bclark10121-cloud.github.io/pixel-hollow/) and its angled view By Lantern's Glow (https://bclark10121-cloud.github.io/by-lanterns-glow/), each at v0.15.0 in one public repo with its own package and a card on The Game Shelf.
 
 ## Now
 
-1. Split the games (Brian, 2026-11-14): the pixel game becomes Pixel Hollow and the angled game becomes By Lantern's Glow, each out of this repo. This repo stays the 3D game. Brian's answers on 2026-11-15: only the pixel and angled games move out. Both start fresh with new package ids, so old `com.brianclark.wandervalley` installs stay as they are. Each gets one public repo with the source, the page, builds and notes, as G1.1 says, with no override. Both follow the shared standards (game-standards, the kit, signing from `game-signing`). GitHub work is done in Brian's browser. Once both are out, each gets a card on the Game Shelf at https://bclark10121-cloud.github.io/ with a picture, a description, its version and a link to its game page (Brian, 2026-11-15). Next up after 3D v0.13.
+1. The testing proposal for game-standards: three test levels for every game (Brian, 2026-11-15).
 
 ## Asked for by Brian, not built yet
 
