@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-16 with 3D v0.17.0 Up and over (shipped). BC asked to build the "Asked for" list in three releases: A (v0.16.0, done), B (v0.17.0, done) and C (v0.18.0, furniture, props and music).
+Updated 2026-11-16 with 3D v0.18.0 Home comforts (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
 
@@ -14,10 +14,11 @@ Updated 2026-11-16 with 3D v0.17.0 Up and over (shipped). BC asked to build the 
 - 3D v0.15.0 The storybook night (2026-11-16): night only as lore with the keeper's lantern in hand, the night track "Prairie nights", the Storybook journal look (parchment, ribbon names, type-out text, voice blips, the journal menu), A on a controller moves the speech on, the bench fix. Only Home Meadows open while it is polished (`data/lands.json`), four glades, four paths, fifteen lamp posts, three benches and three signposts (`data/meadows.json`), and neighbor portraits in the speech box.
 - 3D v0.16.0 Meadow nights (2026-11-16): fireflies, moths at the lamps, rings on the pond, owls and frogs, the Old Well glow (00a in part), new night music "First Light Particles" and indoor music "Peaceful 3" (BC's pick, 9 in part), the find card, pill buttons and choice buttons under speech (2 in part), Elowen and Pond King portraits (6), storybook touch buttons (19) that hide while a key or controller is in use (G5.3, E5.4).
 - 3D v0.17.0 Up and over (2026-11-16): a swim stroke (11), three ladders to ladder-only places (the West Field rock, the Old Woods lookout tree, the old watchtower) with a hand-over-hand climb that cliffs use too (12), a new glider of cream cloth wings with a red border (20), five secret spots with notes from Anna (15).
+- 3D v0.18.0 Home comforts (2026-11-16): KayKit furniture in the cabin with a bed, a couch corner and picture frames (13). Barrels, crates, sacks, a wheelbarrow, a bucket and pumpkins around Home Meadows (14, in part). A song per area of Home Meadows and a Music choice in Settings (9). BC's fixes the same day: every long talk in the storybook speech box page by page (the Pond King first), the notice board as speech with pill buttons, solid hollow logs and five more camera styles.
 
 ## Now
 
-Release C, 3D v0.18.0 (BC, 2026-11-16): house furniture and a prop and find sweep from patch.gg (13, 14), music per area with a music choice in Settings (9).
+Releases A, B and C are done (v0.16.0 to v0.18.0). Waiting on BC: which camera style he likes (nine to try in Settings > Camera), whether the opening story cards move to the speech box too, and what comes next from the list below.
 
 ## Asked for by BC, not built yet
 
@@ -42,12 +43,12 @@ Release C, 3D v0.18.0 (BC, 2026-11-16): house furniture and a prop and find swee
 6c. Fixed in 3D v0.15.0. Bench sitting fix (BC, 2026-11-15, seen on his phone at the Hollow Mountain summit): when you sit on a bench the character sinks into it and the seat and back pass through the body. Check every bench, on flat ground and on slopes (summit, snow lookout, high lake, hill lookouts), and the campfire rest pose. Likely cause: the sit spot sits 0.6 in front of the bench at ground height, then the body is pulled 0.55 back and only 0.1 up, which does not match the seat height of the KayKit Sit pose. Add a check to `web_v12_motions.py` that the hips rest on the seat.
 7. Animated cut scenes: a two minute opening and one per shard.
 8. World and scenery restyle toward a storybook fantasy look, with hobbit-style homes.
-9. Music: a track per area and a music choice in Settings (Release C). Done in 3D v0.16.0: the night music "First Light Particles" and the indoor music "Peaceful 3", both CC0, BC's pick.
+9. Done in 3D v0.18.0. Music: a song per area of Home Meadows and a Music choice in Settings. Done in 3D v0.16.0: the night music "First Light Particles" and the indoor music "Peaceful 3", both CC0, BC's pick.
 10. Settings page redesign. 3D v0.14.0 moved every setting to the shared kit Settings menu. A storybook look for it is still open.
 11. Done in 3D v0.17.0. Swimming animation: the KayKit Crawl motion laid flat on the water.
 12. Done in 3D v0.17.0. Ladders with a climb motion and three ladder-only places in Home Meadows. More ladders come with the other lands.
-13. House furniture from patch.gg.
-14. patch.gg asset sweep for props and finds.
+13. Done in 3D v0.18.0. House furniture from patch.gg: KayKit Furniture Bits for eight pieces, the bed and a couch corner. The other 16 earned pieces still use simple shapes.
+14. In part in 3D v0.18.0: 15 KayKit props around Home Meadows. Still open: models for the finds (they are icons and simple shapes today) and props in the other lands.
 15. In part in 3D v0.17.0: five secret spots in Home Meadows with notes from Anna. More come with the other lands.
 16. Free demo app on Google Play.
 17. Game reviews to borrow from: Alba: A Wildlife Adventure, Animal Crossing and games like A Short Hike.
@@ -116,3 +117,6 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
 - 2026-11-15 (later): the every 5th release full gate is withdrawn. The full gate runs only before an Android production release or when BC asks (G7.9).
 - 2026-11-15: every release updates this game's card on The Game Shelf (version, picture, description, link).
 - Staged work ships only when BC says so. Every release brings the home page link, the APK in chat and the updated backlog.
+
+22. Camera angles (BC, 2026-11-16: "still not sure which one i like"). Nine styles in Settings > Camera from v0.18.0. BC picks a default.
+23. Opening story cards: still full page. Ask BC whether they move to the speech box like every other talk.
