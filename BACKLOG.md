@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-16 with 3D v0.16.0 Meadow nights (shipped). BC asked to build the "Asked for" list in three releases: A (v0.16.0, done), B (v0.17.0, movement) and C (v0.18.0, furniture, props and music). BC decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
+Updated 2026-11-16 with 3D v0.17.0 Up and over (shipped). BC asked to build the "Asked for" list in three releases: A (v0.16.0, done), B (v0.17.0, done) and C (v0.18.0, furniture, props and music).
 
 ## Done
 
@@ -13,10 +13,11 @@ Updated 2026-11-16 with 3D v0.16.0 Meadow nights (shipped). BC asked to build th
 - 3D v0.14.0 Standards catch-up (2026-11-15): the source moved to `game-studio`. The kit Settings menu with full screen in the browser, five save slots with Delete, Tester tools behind a code, How to play, a Menu row in the standard order, pause behind every panel and on focus loss, second-press confirms, its own icon set, three-part version, saves through the kit save store. No new game content.
 - 3D v0.15.0 The storybook night (2026-11-16): night only as lore with the keeper's lantern in hand, the night track "Prairie nights", the Storybook journal look (parchment, ribbon names, type-out text, voice blips, the journal menu), A on a controller moves the speech on, the bench fix. Only Home Meadows open while it is polished (`data/lands.json`), four glades, four paths, fifteen lamp posts, three benches and three signposts (`data/meadows.json`), and neighbor portraits in the speech box.
 - 3D v0.16.0 Meadow nights (2026-11-16): fireflies, moths at the lamps, rings on the pond, owls and frogs, the Old Well glow (00a in part), new night music "First Light Particles" and indoor music "Peaceful 3" (BC's pick, 9 in part), the find card, pill buttons and choice buttons under speech (2 in part), Elowen and Pond King portraits (6), storybook touch buttons (19) that hide while a key or controller is in use (G5.3, E5.4).
+- 3D v0.17.0 Up and over (2026-11-16): a swim stroke (11), three ladders to ladder-only places (the West Field rock, the Old Woods lookout tree, the old watchtower) with a hand-over-hand climb that cliffs use too (12), a new glider of cream cloth wings with a red border (20), five secret spots with notes from Anna (15).
 
 ## Now
 
-Release B, 3D v0.17.0 movement (BC, 2026-11-16): swimming animation (11), ladders with a climb motion and ladder-only spots (12), a stylized glider (20), secret locations in Home Meadows (15). Then Release C, 3D v0.18.0: furniture and a prop sweep from patch.gg (13, 14) and music per area (9).
+Release C, 3D v0.18.0 (BC, 2026-11-16): house furniture and a prop and find sweep from patch.gg (13, 14), music per area with a music choice in Settings (9).
 
 ## Asked for by BC, not built yet
 
@@ -43,16 +44,16 @@ Release B, 3D v0.17.0 movement (BC, 2026-11-16): swimming animation (11), ladder
 8. World and scenery restyle toward a storybook fantasy look, with hobbit-style homes.
 9. Music: a track per area and a music choice in Settings (Release C). Done in 3D v0.16.0: the night music "First Light Particles" and the indoor music "Peaceful 3", both CC0, BC's pick.
 10. Settings page redesign. 3D v0.14.0 moved every setting to the shared kit Settings menu. A storybook look for it is still open.
-11. Swimming animation.
-12. Ladders with a climb motion and ladder-only places.
+11. Done in 3D v0.17.0. Swimming animation: the KayKit Crawl motion laid flat on the water.
+12. Done in 3D v0.17.0. Ladders with a climb motion and three ladder-only places in Home Meadows. More ladders come with the other lands.
 13. House furniture from patch.gg.
 14. patch.gg asset sweep for props and finds.
-15. Secret locations.
+15. In part in 3D v0.17.0: five secret spots in Home Meadows with notes from Anna. More come with the other lands.
 16. Free demo app on Google Play.
 17. Game reviews to borrow from: Alba: A Wildlife Adventure, Animal Crossing and games like A Short Hike.
 18. Rename the game to The Waylight Wander. Filed by BC as backlog. Nothing renamed.
 19. Done in 3D v0.16.0. On-screen buttons: parchment discs for Jump and Act and a parchment stick, shown only while playing by touch.
-20. Glider look: a more stylized glider when you hold Jump, in the spirit of a classic fantasy adventure. BC, 2026-11-15. Original art only, nothing copied from another game (Not planned 5).
+20. Done in 3D v0.17.0. Glider look: moth-like cloth wings in cream with a red border, dark veins, a wooden spar and two ribbons. Original, built in code.
 21. In part in 3D v0.15.0 (larger open areas, paths and lamp posts in Home Meadows). Still open: towns, farms, roads in the other lands, a bigger map. A bigger, more lifelike world (BC, 2026-11-15): bigger biomes, more open space between areas and denser scenery in others. Towns in some areas with farms, farm animals and several buildings. Roads with light posts at the crossings, and touches like that. Overlaps item 8 (storybook restyle) and idea 6 (Village Buildings). Roads bring in the road rules G6.5 and G6.6, which the game skips today. Bigger lands need the reach and access reports, the end to end walk and a frame rate check on the Retroid.
 
 ## Ideas to choose from (BC picks by number)
