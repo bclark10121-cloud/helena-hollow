@@ -22,7 +22,7 @@ Updated 2026-11-15 with 3D v0.14.0 (the standards catch-up, shipped) and the pla
    - The keeper carries a glowing lantern.
    - A on a controller shows the next message and closes the last one.
    - Bench fix: the keeper sits on the seat instead of sinking through it (item 6c).
-   - The Lantern glow look for the speech box, prompts, pop-ups and menus, with type-out text and voice blips (item 2a, `docs/ui/lantern-glow-spec.md`).
+   - The Storybook journal look for the speech box, prompts, pop-ups and menus: parchment, ribbon names, portraits, a leather journal menu, type-out text and voice blips (item 2a, `docs/ui/storybook-journal-spec.md`).
 
 ## Asked for by BC, not built yet
 
@@ -39,7 +39,7 @@ Updated 2026-11-15 with 3D v0.14.0 (the standards catch-up, shipped) and the pla
 
 0. Standards open items: the touch controls hide when a key or controller is used (G5.3, E5.4), older suites moved to the new menus as releases touch them, and the engineering open items in `STANDARDS_OVERRIDES.md`. The title card keys and one-line description are done in v0.14.0.
 1. The four new biomes with their guardians and the ending of the Waylight story: Lantern Marsh, Hilltop Ruins, Hollow Peak and Tidepool Isles. BC set this as the next content release.
-2a. In 3D v0.15.0. New look for text, pop-ups and menus (BC, 2026-11-15): "I still dont like the menu and text box that display." BC picked option B, Lantern glow, out of three mockups, and said yes to voice blips with an off switch. Spec and mockups: `docs/ui/lantern-glow-spec.md`.
+2a. In 3D v0.15.0. New look for text, pop-ups and menus (BC, 2026-11-15): "I still dont like the menu and text box that display." BC picked option A, Storybook journal, out of three mockups (10:54 PM, after first picking Lantern glow), and said yes to voice blips with an off switch. Spec and mockups: `docs/ui/storybook-journal-spec.md`.
 2. Storybook UI pass: warm pill buttons, a tabbed Settings menu, an item-found page, choice buttons in speech. All original art.
 3. Toy diorama direction: tilt-shift, denser toy-like scenery, a camera nearer top-down, puzzle places per guardian, about 50 small hidden collectibles.
 5. Left over from the Waylight build: neighbor lines that react to shards, a boon per shard, Waylight chapter names, guardian models.
