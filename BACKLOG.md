@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-16 with 3D v0.18.0 Home comforts (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-16 with 3D v0.18.1 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
 
@@ -15,6 +15,7 @@ Updated 2026-11-16 with 3D v0.18.0 Home comforts (shipped). BC's three releases 
 - 3D v0.16.0 Meadow nights (2026-11-16): fireflies, moths at the lamps, rings on the pond, owls and frogs, the Old Well glow (00a in part), new night music "First Light Particles" and indoor music "Peaceful 3" (BC's pick, 9 in part), the find card, pill buttons and choice buttons under speech (2 in part), Elowen and Pond King portraits (6), storybook touch buttons (19) that hide while a key or controller is in use (G5.3, E5.4).
 - 3D v0.17.0 Up and over (2026-11-16): a swim stroke (11), three ladders to ladder-only places (the West Field rock, the Old Woods lookout tree, the old watchtower) with a hand-over-hand climb that cliffs use too (12), a new glider of cream cloth wings with a red border (20), five secret spots with notes from Anna (15).
 - 3D v0.18.0 Home comforts (2026-11-16): KayKit furniture in the cabin with a bed, a couch corner and picture frames (13). Barrels, crates, sacks, a wheelbarrow, a bucket and pumpkins around Home Meadows (14, in part). A song per area of Home Meadows and a Music choice in Settings (9). BC's fixes the same day: every long talk in the storybook speech box page by page (the Pond King first), the notice board as speech with pill buttons, solid hollow logs and five more camera styles.
+- 3D v0.18.1 (2026-11-16): BC's ask. The night cricket bed is gone, and Settings has an Ambience volume for owls, frogs, cave drips and wind.
 
 ## Now
 
