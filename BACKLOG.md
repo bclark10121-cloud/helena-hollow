@@ -122,3 +122,11 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
 
 22. Camera angles (BC, 2026-11-16: "still not sure which one i like"). Nine styles in Settings > Camera from v0.18.0. BC picks a default.
 23. Opening story cards: still full page. Ask BC whether they move to the speech box like every other talk.
+24. Title card redesign (BC, 2026-11-16, seen in Chrome on the Retroid): "It's too plain, needs a more professional look." Today it is a flat parchment page with the name, the version line, one line on the game, Continue, Play, Settings and a controls line in plain text. Ideas to discuss with BC:
+   - A real backdrop: the night world behind the card (the Old Well, lamp posts and fireflies, slowly turning) or key art, in place of a blank page.
+   - A logo in place of plain text: the name with the Waylight lantern, in the storybook fonts.
+   - Storybook buttons: Continue as the main button with the slot's progress on it, Play and Settings beside it in the same size family, a clear focus glow for the controller.
+   - The controls line as button icons for the device in use (Xbox, keys or touch), not plain words.
+   - Small touches: the version tucked into a corner, title music, a soft fade into play. Fireflies stop with Reduce motion.
+   - From the 2026-11-16 review: on a phone in portrait Play and Settings are about 36 px tall and the controls line showed keyboard keys to a touch player. Touch targets of 44 px or more.
+   - Keeps G5.5 and G5.12 (name, version line, one line on the game, Continue or Start, Play, Settings, Quit off the web).
