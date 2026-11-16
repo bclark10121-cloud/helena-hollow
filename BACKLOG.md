@@ -164,3 +164,7 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - Keep jumping and gliding off on purpose possible: the wall stops walking, a jump still clears it. Or make the gap the glide spot. BC to confirm which.
    - Add a check to `web_v17`: walking straight at each edge on each top keeps the keeper on top.
    - Pairs with items 31 and 32 (the ladder places). One release can fix all three.
+34. The keeper falls through the mended bridge (BC, 2026-11-16, 5:26 PM, seen on the Retroid). The deck shows once 8 finds are in, but walking onto it drops the keeper into the river under it. Cause: `world.gd` `_bridge_state()` (about line 1445) shows the deck when the `bridge` flag is set, but adds the deck's solid shape only when the Autumn Woods are on (`Game.land_on("autumn")`). While that land is off the deck is a picture with nothing to stand on. The two end pieces are solid, the middle is not.
+   - Fix: add the deck's solid whenever the bridge is mended. Keep the river wall and the rope with its "Not tonight" note at the far end while the Autumn Woods are off, so the keeper walks out to the rope and reads the note but cannot cross.
+   - Check the keeper can climb back out of the river at that spot, and that the rope note prompt sits on the deck where the keeper stands.
+   - Add a check to `web_v15` (lands switched off, the bridge rope): walk onto the mended bridge and the keeper stays on the deck at its height.
