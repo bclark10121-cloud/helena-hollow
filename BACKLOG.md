@@ -66,6 +66,26 @@ Updated 2026-11-16 with 3D v0.15.0 part 2 (staged, not shipped). 3D v0.14.0 is t
 6. v0.15 Village Buildings: a general store and Hazel's bakery to walk into.
 7. v0.20 Second look: cliff tops and ledges in the first six lands.
 
+## Unfinished standards items (2026-11-15)
+
+From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on a real device. Each line comes off when it is done. BC picks when.
+
+- G7.9 upkeep: older suites (`web_v03`, `web_v06`, `web_v13` and others) still drive the ten-slot title card and the old Settings page. Each is updated the first time a release touches its area.
+- G5.3, E5.4: hide the touch controls when a key or controller input arrives.
+- G8.1: music made in code by `tools/make_audio.py`. The rule asks for Patch.gg tracks (the night track from Patch.gg is planned for v0.15.0).
+- E1.2: about 195 `Array` and `Dictionary` declarations without element types.
+- E1.3: the world, the player and the HUD each run an always-on loop.
+- E1.5: about 72 play-time checks use `distance_to()` or `length()` in place of squared distances.
+- E2.3: 17 places make or copy a material. Most run while a land is built.
+- E3.2: check every repeated prop uses `MultiMeshInstance3D` (4 places do today).
+- E3.4: no prop sets `visibility_range_end`. Characters have no `VisibleOnScreenEnabler3D`.
+- E4.2: physics interpolation is off.
+- E4.5: finds and wildlife free their nodes when taken, not pooled.
+- E4.6: keyframe compression is off on the imported `.glb` files. VRAM not measured.
+- E5.2: the default Picture setting renders 3D at full scale. No 60 fps cap on mobile.
+- E6.3: music and ambient loops are mono `.ogg` at about 72 kbps. The rule asks for 96 to 128 kbps.
+- Real device check: nothing tried on a real device since v0.13 (BC tried v0.13 on his phone and the Retroid).
+
 ## Later
 
 1. Google Play: Play Console setup, the 14 day closed test with 12 testers, then v1.0 Store ready.
