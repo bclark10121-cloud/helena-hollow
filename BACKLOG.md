@@ -153,3 +153,9 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - Fix: make the rock fit the ladder. Scale the layers so their south face lines up with the 4 m top (about 2.1 m out), or move the ladder out to the rock's real face. Give the rock a rougher, less stacked look (fewer, offset boulders, a darker grey so the night light does not turn it bright blue).
    - Check the other two ladder places the same way: the Old Woods lookout tree (its crown is scaled 2.6 wide and may swallow the top deck) and the old watchtower.
    - Add a check to `web_v17`: no rock or crown mesh within 0.3 m of a ladder rung. Keep the climb path, the top secrets and the reach report as they are.
+32. The keeper walks through the tree trunk on the Old Woods lookout (BC, 2026-11-16, 5:24 PM, seen on the Retroid). On the top deck the keeper can stand inside the trunk. Cause: `world.gd` `_ladder_places()` "tree" kind (about line 4457) draws the trunk from the ground to 3 m above the deck, but its solid shape (`ts`, radius 0.9, height `h`) stops at the deck. Above the deck the trunk has no collision.
+   - Fix: a second solid for the trunk from the deck up to the crown (radius about 0.9), or one solid from the ground to the crown top. Check the ladder exit point and the secret chest corner stay clear of it.
+   - Same screenshot: the crown sits low (deck height plus 0.6 m, scaled 2.6 wide), so its dark underside fills the top of the view on the deck. Raise the crown or thin it over the deck so the lookout has a view. Pairs with item 27 (fade trees near the camera).
+   - The trunk and crown read very dark at night. Check the lamp and lantern light on them.
+   - Add a check to `web_v17`: on the lookout deck, walking at the trunk stops the keeper outside it.
+   - Related to item 31 (the West Field rock ladder). Check the old watchtower for the same gaps.
