@@ -120,7 +120,11 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
 - 2026-11-15: every release updates this game's card on The Game Shelf (version, picture, description, link).
 - Staged work ships only when BC says so. Every release brings the home page link, the APK in chat and the updated backlog.
 
-22. Camera angles (BC, 2026-11-16: "still not sure which one i like"). Nine styles in Settings > Camera from v0.18.0. BC picks a default.
+22. Camera angles. Decided (BC, 2026-11-16, 5:17 PM): keep three cameras, in this order in Settings > Camera: Diorama (the default), Far and wide, Close and low. Drop Classic, Closer, Over the shoulder, Top down, Toy box and Storybook. Earlier the same day BC was "still not sure which one i like" among the nine styles from v0.18.0.
+   - Today the default is Close and low (`camstyle` 3 in `Game.cfg`, `game.gd:171` and `game.gd:367`). The three kept are `CAM_NAMES` 2 (Diorama), 5 (Far and wide) and 3 (Close and low).
+   - Saved settings hold the old index. Move them over once: Diorama, Far and wide and Close and low keep their camera. Every dropped style goes to Diorama. Keep the old styles in `player.gd` `CAM_STYLES` or remap with care, since the rule says new styles go on the end so saved choices keep their camera.
+   - Update the Tester tools Camera choice and the `web_v13` and `web_v18` camera checks to the three styles.
+   - From the 2026-11-16 review: trees between the camera and the keeper still hide the keeper in any style. Fading near trees is a separate item.
 23. Opening story cards: still full page. Ask BC whether they move to the speech box like every other talk.
 24. Title card redesign (BC, 2026-11-16, seen in Chrome on the Retroid): "It's too plain, needs a more professional look." Today it is a flat parchment page with the name, the version line, one line on the game, Continue, Play, Settings and a controls line in plain text. Ideas to discuss with BC:
    - A real backdrop: the night world behind the card (the Old Well, lamp posts and fireflies, slowly turning) or key art, in place of a blank page.
