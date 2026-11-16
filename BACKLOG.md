@@ -159,3 +159,8 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - The trunk and crown read very dark at night. Check the lamp and lantern light on them.
    - Add a check to `web_v17`: on the lookout deck, walking at the trunk stops the keeper outside it.
    - Related to item 31 (the West Field rock ladder). Check the old watchtower for the same gaps.
+33. No edge on the ladder tops, so the keeper falls off (BC, 2026-11-16, 5:25 PM, seen on the Retroid). Cause: `world.gd` `_ladder_places()` (about line 4431) draws the old watchtower's stone merlons and the lookout deck's rails as looks only (`_box(..., false)`, no solid). The West Field rock top has nothing at its edge at all. Nothing stops the keeper at the edge.
+   - Fix: a low solid wall or rail on every side of all three tops (the watchtower, the lookout deck and the West Field rock), with one gap at the head of the ladder so the climb down still works. Make the merlons and rails solid where they are drawn, and add a low stone lip or a rope rail on the rock.
+   - Keep jumping and gliding off on purpose possible: the wall stops walking, a jump still clears it. Or make the gap the glide spot. BC to confirm which.
+   - Add a check to `web_v17`: walking straight at each edge on each top keeps the keeper on top.
+   - Pairs with items 31 and 32 (the ladder places). One release can fix all three.
