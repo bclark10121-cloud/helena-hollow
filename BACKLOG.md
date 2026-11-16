@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-16 with 3D v0.15.0 The storybook night (shipped). BC decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
+Updated 2026-11-16 with 3D v0.16.0 Meadow nights (shipped). BC asked to build the "Asked for" list in three releases: A (v0.16.0, done), B (v0.17.0, movement) and C (v0.18.0, furniture, props and music). BC decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
 
 ## Done
 
@@ -12,14 +12,15 @@ Updated 2026-11-16 with 3D v0.15.0 The storybook night (shipped). BC decides the
 
 - 3D v0.14.0 Standards catch-up (2026-11-15): the source moved to `game-studio`. The kit Settings menu with full screen in the browser, five save slots with Delete, Tester tools behind a code, How to play, a Menu row in the standard order, pause behind every panel and on focus loss, second-press confirms, its own icon set, three-part version, saves through the kit save store. No new game content.
 - 3D v0.15.0 The storybook night (2026-11-16): night only as lore with the keeper's lantern in hand, the night track "Prairie nights", the Storybook journal look (parchment, ribbon names, type-out text, voice blips, the journal menu), A on a controller moves the speech on, the bench fix. Only Home Meadows open while it is polished (`data/lands.json`), four glades, four paths, fifteen lamp posts, three benches and three signposts (`data/meadows.json`), and neighbor portraits in the speech box.
+- 3D v0.16.0 Meadow nights (2026-11-16): fireflies, moths at the lamps, rings on the pond, owls and frogs, the Old Well glow (00a in part), new night music "First Light Particles" and indoor music "Peaceful 3" (BC's pick, 9 in part), the find card, pill buttons and choice buttons under speech (2 in part), Elowen and Pond King portraits (6), storybook touch buttons (19) that hide while a key or controller is in use (G5.3, E5.4).
 
 ## Now
 
-Nothing on a branch. BC picks the next release from the lists below.
+Release B, 3D v0.17.0 movement (BC, 2026-11-16): swimming animation (11), ladders with a climb motion and ladder-only spots (12), a stylized glider (20), secret locations in Home Meadows (15). Then Release C, 3D v0.18.0: furniture and a prop sweep from patch.gg (13, 14) and music per area (9).
 
 ## Asked for by BC, not built yet
 
-00a. To discuss (BC, 2026-11-15): feedback from an r/aigamedev thread on another dev's cozy 3D world, mapped to this game. Nothing chosen yet.
+00a. In part in 3D v0.16.0 (fireflies, moths at lamps, pond ripples, owls and frogs, the Old Well glow). Still to discuss: the rest of this list. Feedback from an r/aigamedev thread on another dev's cozy 3D world, mapped to this game (BC, 2026-11-15).
    - Life and sound: fireflies, moths at lamps, drifting leaves, swaying grass and trees, ripples in ponds, night sound layers (crickets, owls, wind, water).
    - Light and mood: a dark base, warm pools of lamp light, cool moon rim light, distance fog, one lit landmark per area (the Old Well, the Waylight tower, a giant crooked tree).
    - Layout: gentle hills instead of flat ground, worn dirt paths, lamps at path crossings and benches at views with uneven gaps, lived-in clutter placed on purpose (firewood, a lantern on a fence post, a fallen log, mushroom rings).
@@ -30,17 +31,17 @@ Nothing on a branch. BC picks the next release from the lists below.
 00b. To discuss (BC, 2026-11-15): a set of reference sheets made with Gemini and Meshy in BC's Chrome. Ideas: the keeper with the lantern (front, side, back), night props (lamps, benches, signposts, fences, carts), trees and nature, landmarks. Meshy charges credits per model.
 01. Custom story characters through BC's pipeline (Claude prompts, Gemini images, Meshy models, Claude brings them in), as an alternative to the KayKit cast. One test character first.
 
-0. Standards open items: the touch controls hide when a key or controller is used (G5.3, E5.4), older suites moved to the new menus as releases touch them, and the engineering open items in `STANDARDS_OVERRIDES.md`. The title card keys and one-line description are done in v0.14.0.
+0. Standards open items: older suites moved to the new menus as releases touch them, and the engineering open items in `STANDARDS_OVERRIDES.md`. The title card keys and one-line description are done in v0.14.0.
 1. The four new biomes with their guardians and the ending of the Waylight story: Lantern Marsh, Hilltop Ruins, Hollow Peak and Tidepool Isles. BC set this as the next content release.
 2a. Built in 3D v0.15.0. New look for text, pop-ups and menus (BC, 2026-11-15): "I still dont like the menu and text box that display." BC picked option A, Storybook journal, out of three mockups (10:54 PM, after first picking Lantern glow), and said yes to voice blips with an off switch. Spec and mockups: `docs/ui/storybook-journal-spec.md`.
-2. Storybook UI pass: warm pill buttons, a tabbed Settings menu, an item-found page, choice buttons in speech. All original art.
+2. Storybook UI pass. Done in 3D v0.16.0: warm pill buttons, the find card, choice buttons in speech. Still open: a tabbed Settings menu (the Settings panel is a kit piece, so it needs a kit change BC approves).
 3. Toy diorama direction: tilt-shift, denser toy-like scenery, a camera nearer top-down, puzzle places per guardian, about 50 small hidden collectibles.
 5. Left over from the Waylight build: neighbor lines that react to shards, a boon per shard, Waylight chapter names, guardian models.
-6. Speech box follow-ups: choice buttons, a look on a real phone next to the touch buttons. Portraits for Elowen and the six guardians (they have no models yet). Neighbor portraits are in 3D v0.15.0.
+6. Speech box follow-ups: a look on a real phone next to the touch buttons, portraits for the five guardians in the lands that are off. Done: neighbor portraits (v0.15.0), Elowen and the Pond King portraits and choice buttons (v0.16.0).
 6c. Fixed in 3D v0.15.0. Bench sitting fix (BC, 2026-11-15, seen on his phone at the Hollow Mountain summit): when you sit on a bench the character sinks into it and the seat and back pass through the body. Check every bench, on flat ground and on slopes (summit, snow lookout, high lake, hill lookouts), and the campfire rest pose. Likely cause: the sit spot sits 0.6 in front of the bench at ground height, then the body is pulled 0.55 back and only 0.1 up, which does not match the seat height of the KayKit Sit pose. Add a check to `web_v12_motions.py` that the hips rest on the seat.
 7. Animated cut scenes: a two minute opening and one per shard.
 8. World and scenery restyle toward a storybook fantasy look, with hobbit-style homes.
-9. Music: tracks from patch.gg (G8.1), a track per biome and a music choice in Settings. The new night track is in 3D v0.15.0.
+9. Music: a track per area and a music choice in Settings (Release C). Done in 3D v0.16.0: the night music "First Light Particles" and the indoor music "Peaceful 3", both CC0, BC's pick.
 10. Settings page redesign. 3D v0.14.0 moved every setting to the shared kit Settings menu. A storybook look for it is still open.
 11. Swimming animation.
 12. Ladders with a climb motion and ladder-only places.
@@ -50,7 +51,7 @@ Nothing on a branch. BC picks the next release from the lists below.
 16. Free demo app on Google Play.
 17. Game reviews to borrow from: Alba: A Wildlife Adventure, Animal Crossing and games like A Short Hike.
 18. Rename the game to The Waylight Wander. Filed by BC as backlog. Nothing renamed.
-19. On-screen buttons, browser and Android: a better look for the touch buttons (Jump, Act, the stick and the corner Menu). BC, 2026-11-15: they look too basic. Fits with item 2, the storybook UI pass.
+19. Done in 3D v0.16.0. On-screen buttons: parchment discs for Jump and Act and a parchment stick, shown only while playing by touch.
 20. Glider look: a more stylized glider when you hold Jump, in the spirit of a classic fantasy adventure. BC, 2026-11-15. Original art only, nothing copied from another game (Not planned 5).
 21. In part in 3D v0.15.0 (larger open areas, paths and lamp posts in Home Meadows). Still open: towns, farms, roads in the other lands, a bigger map. A bigger, more lifelike world (BC, 2026-11-15): bigger biomes, more open space between areas and denser scenery in others. Towns in some areas with farms, farm animals and several buildings. Roads with light posts at the crossings, and touches like that. Overlaps item 8 (storybook restyle) and idea 6 (Village Buildings). Roads bring in the road rules G6.5 and G6.6, which the game skips today. Bigger lands need the reach and access reports, the end to end walk and a frame rate check on the Retroid.
 
@@ -69,8 +70,7 @@ Nothing on a branch. BC picks the next release from the lists below.
 From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on a real device. Each line comes off when it is done. BC picks when.
 
 - G7.9 upkeep: older suites (`web_v03`, `web_v06`, `web_v13` and others) still drive the ten-slot title card and the old Settings page. Each is updated the first time a release touches its area.
-- G5.3, E5.4: hide the touch controls when a key or controller input arrives.
-- G8.1: music made in code by `tools/make_audio.py` for the other lands. The rule asks for Patch.gg tracks. Home Meadows plays the CC0 night track "Prairie nights" from v0.15.0.
+- G8.1: music made in code by `tools/make_audio.py` for the other lands. The rule asks for Patch.gg tracks. Home Meadows plays the CC0 night track "First Light Particles" and indoors play "Peaceful 3" from v0.16.0.
 - E1.2: about 195 `Array` and `Dictionary` declarations without element types.
 - E1.3: the world, the player and the HUD each run an always-on loop.
 - E1.5: about 72 play-time checks use `distance_to()` or `length()` in place of squared distances.
