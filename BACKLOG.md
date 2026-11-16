@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-15 with 3D v0.14.0 (the standards catch-up, shipped) and the plan for 3D v0.15.0 (the night release). BC decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
+Updated 2026-11-16 with 3D v0.15.0 part 2 (staged, not shipped). 3D v0.14.0 is the live build. BC decides the order. The full history, every test checklist and every judgment call are in `docs/roadmap.md`.
 
 ## Done
 
@@ -14,15 +14,10 @@ Updated 2026-11-15 with 3D v0.14.0 (the standards catch-up, shipped) and the pla
 
 ## Now
 
-1. 3D v0.15.0, the night release, staged until BC says ship (BC, 2026-11-15):
-   - Night only, made part of the lore: the great storm put out the Waylight and the sun went with it. Lamps, fireflies and the keeper's lantern are the only light. Relighting the Waylight at the end brings the first dawn.
-   - A new night track from patch.gg in place of the made-in-code night music.
-   - Only Home Meadows active while the gameplay gets polished, for a smaller package and less testing. The other lands are switched off and left out of the build, not deleted.
-   - Larger, more open areas in Home Meadows with paths and lighting.
-   - The keeper carries a glowing lantern.
-   - A on a controller shows the next message and closes the last one.
-   - Bench fix: the keeper sits on the seat instead of sinking through it (item 6c).
-   - The Storybook journal look for the speech box, prompts, pop-ups and menus: parchment, ribbon names, portraits, a leather journal menu, type-out text and voice blips (item 2a, `docs/ui/storybook-journal-spec.md`).
+1. 3D v0.15.0, the night release with the storybook look, staged on the `game-studio` branch `staging/keeper-v0.15.0` until BC says ship (BC, 2026-11-15). Parts 1 and 2 are built. Waiting on BC's word to ship.
+   - Part 1: night only as lore (the Waylight's fall took the sun, `dawn` flag for the ending), the keeper's lantern in the left hand, the CC0 night track "Prairie nights", A on a controller moves the speech on, the bench fix (6c), the Storybook journal look (2a): fonts, parchment, the speech box with ribbon and medallion, type-out text, voice blips with a Settings switch, button icons in the prompt, stacked pop-ups, the journal menu.
+   - Part 2 (2026-11-16): only Home Meadows active (`data/lands.json`: the other lands are switched off, not deleted), larger open areas in Home Meadows (four glades, four new paths, fifteen lamp posts with light pools, three benches, three signposts, `data/meadows.json`), portraits drawn from each neighbor's model in the speech box (`portraits/`, `tools/portraits.gd`).
+   - To switch a land back on: add its id to `on` in `data/lands.json`. The shovel and the Lantern rule go back with the Autumn Woods.
 
 ## Asked for by BC, not built yet
 
@@ -39,12 +34,12 @@ Updated 2026-11-15 with 3D v0.14.0 (the standards catch-up, shipped) and the pla
 
 0. Standards open items: the touch controls hide when a key or controller is used (G5.3, E5.4), older suites moved to the new menus as releases touch them, and the engineering open items in `STANDARDS_OVERRIDES.md`. The title card keys and one-line description are done in v0.14.0.
 1. The four new biomes with their guardians and the ending of the Waylight story: Lantern Marsh, Hilltop Ruins, Hollow Peak and Tidepool Isles. BC set this as the next content release.
-2a. In 3D v0.15.0. New look for text, pop-ups and menus (BC, 2026-11-15): "I still dont like the menu and text box that display." BC picked option A, Storybook journal, out of three mockups (10:54 PM, after first picking Lantern glow), and said yes to voice blips with an off switch. Spec and mockups: `docs/ui/storybook-journal-spec.md`.
+2a. Built in the staged 3D v0.15.0 (part 1). New look for text, pop-ups and menus (BC, 2026-11-15): "I still dont like the menu and text box that display." BC picked option A, Storybook journal, out of three mockups (10:54 PM, after first picking Lantern glow), and said yes to voice blips with an off switch. Spec and mockups: `docs/ui/storybook-journal-spec.md`.
 2. Storybook UI pass: warm pill buttons, a tabbed Settings menu, an item-found page, choice buttons in speech. All original art.
 3. Toy diorama direction: tilt-shift, denser toy-like scenery, a camera nearer top-down, puzzle places per guardian, about 50 small hidden collectibles.
 5. Left over from the Waylight build: neighbor lines that react to shards, a boon per shard, Waylight chapter names, guardian models.
-6. Speech box follow-ups: speaker portraits, choice buttons, a look on a real phone next to the touch buttons.
-6c. In 3D v0.15.0. Bench sitting fix (BC, 2026-11-15, seen on his phone at the Hollow Mountain summit): when you sit on a bench the character sinks into it and the seat and back pass through the body. Check every bench, on flat ground and on slopes (summit, snow lookout, high lake, hill lookouts), and the campfire rest pose. Likely cause: the sit spot sits 0.6 in front of the bench at ground height, then the body is pulled 0.55 back and only 0.1 up, which does not match the seat height of the KayKit Sit pose. Add a check to `web_v12_motions.py` that the hips rest on the seat.
+6. Speech box follow-ups: choice buttons, a look on a real phone next to the touch buttons. Portraits for Elowen and the six guardians (they have no models yet). Neighbor portraits are in the staged 3D v0.15.0.
+6c. Fixed in the staged 3D v0.15.0. Bench sitting fix (BC, 2026-11-15, seen on his phone at the Hollow Mountain summit): when you sit on a bench the character sinks into it and the seat and back pass through the body. Check every bench, on flat ground and on slopes (summit, snow lookout, high lake, hill lookouts), and the campfire rest pose. Likely cause: the sit spot sits 0.6 in front of the bench at ground height, then the body is pulled 0.55 back and only 0.1 up, which does not match the seat height of the KayKit Sit pose. Add a check to `web_v12_motions.py` that the hips rest on the seat.
 7. Animated cut scenes: a two minute opening and one per shard.
 8. World and scenery restyle toward a storybook fantasy look, with hobbit-style homes.
 9. Music: tracks from patch.gg (G8.1), a track per biome and a music choice in Settings. The new night track is in 3D v0.15.0.
@@ -59,7 +54,7 @@ Updated 2026-11-15 with 3D v0.14.0 (the standards catch-up, shipped) and the pla
 18. Rename the game to The Waylight Wander. Filed by BC as backlog. Nothing renamed.
 19. On-screen buttons, browser and Android: a better look for the touch buttons (Jump, Act, the stick and the corner Menu). BC, 2026-11-15: they look too basic. Fits with item 2, the storybook UI pass.
 20. Glider look: a more stylized glider when you hold Jump, in the spirit of a classic fantasy adventure. BC, 2026-11-15. Original art only, nothing copied from another game (Not planned 5).
-21. In part in 3D v0.15.0 (larger open areas, paths and lighting in Home Meadows). A bigger, more lifelike world (BC, 2026-11-15): bigger biomes, more open space between areas and denser scenery in others. Towns in some areas with farms, farm animals and several buildings. Roads with light posts at the crossings, and touches like that. Overlaps item 8 (storybook restyle) and idea 6 (Village Buildings). Roads bring in the road rules G6.5 and G6.6, which the game skips today. Bigger lands need the reach and access reports, the end to end walk and a frame rate check on the Retroid.
+21. In part in the staged 3D v0.15.0 (larger open areas, paths and lamp posts in Home Meadows). Still open: towns, farms, roads in the other lands, a bigger map. A bigger, more lifelike world (BC, 2026-11-15): bigger biomes, more open space between areas and denser scenery in others. Towns in some areas with farms, farm animals and several buildings. Roads with light posts at the crossings, and touches like that. Overlaps item 8 (storybook restyle) and idea 6 (Village Buildings). Roads bring in the road rules G6.5 and G6.6, which the game skips today. Bigger lands need the reach and access reports, the end to end walk and a frame rate check on the Retroid.
 
 ## Ideas to choose from (BC picks by number)
 
