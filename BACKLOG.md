@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-16 with 3D v0.18.1 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-16 with 3D v0.18.2 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
 
@@ -16,6 +16,7 @@ Updated 2026-11-16 with 3D v0.18.1 (shipped). BC's three releases from the "Aske
 - 3D v0.17.0 Up and over (2026-11-16): a swim stroke (11), three ladders to ladder-only places (the West Field rock, the Old Woods lookout tree, the old watchtower) with a hand-over-hand climb that cliffs use too (12), a new glider of cream cloth wings with a red border (20), five secret spots with notes from Anna (15).
 - 3D v0.18.0 Home comforts (2026-11-16): KayKit furniture in the cabin with a bed, a couch corner and picture frames (13). Barrels, crates, sacks, a wheelbarrow, a bucket and pumpkins around Home Meadows (14, in part). A song per area of Home Meadows and a Music choice in Settings (9). BC's fixes the same day: every long talk in the storybook speech box page by page (the Pond King first), the notice board as speech with pill buttons, solid hollow logs and five more camera styles.
 - 3D v0.18.1 (2026-11-16): BC's ask. The night cricket bed is gone, and Settings has an Ambience volume for owls, frogs, cave drips and wind.
+- 3D v0.18.2 (2026-11-16): BC's ask. The touch buttons leave the screen the moment a controller is used (they stayed drawn before), and Settings > Touch buttons offers Auto, Always or Off.
 
 ## Now
 
