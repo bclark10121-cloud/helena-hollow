@@ -20,7 +20,9 @@ Updated 2026-11-16 with 3D v0.18.2 (shipped). BC's three releases from the "Aske
 
 ## Now
 
-Releases A, B and C are done (v0.16.0 to v0.18.0). Waiting on BC: which camera style he likes (nine to try in Settings > Camera), whether the opening story cards move to the speech box too, and what comes next from the list below.
+Releases A, B and C are done (v0.16.0 to v0.18.0). Waiting on BC: whether the opening story cards move to the speech box too, and what comes next from the list below.
+
+Next release (BC, 2026-11-16, 7:39 PM): includes item 24, the Lantern Hill title card (option A). Decision only. Nothing is started until BC says go. The rest of the release is still BC's pick.
 
 ## Asked for by BC, not built yet
 
@@ -126,7 +128,7 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - Update the Tester tools Camera choice and the `web_v13` and `web_v18` camera checks to the three styles.
    - From the 2026-11-16 review: trees between the camera and the keeper still hide the keeper in any style. Fading near trees is a separate item.
 23. Opening story cards: still full page. Ask BC whether they move to the speech box like every other talk.
-24. Title card redesign (BC, 2026-11-16, seen in Chrome on the Retroid): "It's too plain, needs a more professional look." Today it is a flat parchment page with the name, the version line, one line on the game, Continue, Play, Settings and a controls line in plain text. Ideas to discuss with BC:
+24. Title card redesign, set for the next release (BC, 2026-11-16, 7:39 PM: option A, Lantern Hill, not started). First asked 2026-11-16, seen in Chrome on the Retroid: "It's too plain, needs a more professional look." Today it is a flat parchment page with the name, the version line, one line on the game, Continue, Play, Settings and a controls line in plain text. Ideas to discuss with BC:
    - A real backdrop: the night world behind the card (the Old Well, lamp posts and fireflies, slowly turning) or key art, in place of a blank page.
    - A logo in place of plain text: the name with the Waylight lantern, in the storybook fonts.
    - Storybook buttons: Continue as the main button with the slot's progress on it, Play and Settings beside it in the same size family, a clear focus glow for the controller.
