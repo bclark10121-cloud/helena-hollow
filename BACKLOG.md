@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-16 with 3D v0.18.2 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-17 with 3D v0.19.0 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
 
@@ -17,12 +17,13 @@ Updated 2026-11-16 with 3D v0.18.2 (shipped). BC's three releases from the "Aske
 - 3D v0.18.0 Home comforts (2026-11-16): KayKit furniture in the cabin with a bed, a couch corner and picture frames (13). Barrels, crates, sacks, a wheelbarrow, a bucket and pumpkins around Home Meadows (14, in part). A song per area of Home Meadows and a Music choice in Settings (9). BC's fixes the same day: every long talk in the storybook speech box page by page (the Pond King first), the notice board as speech with pill buttons, solid hollow logs and five more camera styles.
 - 3D v0.18.1 (2026-11-16): BC's ask. The night cricket bed is gone, and Settings has an Ambience volume for owls, frogs, cave drips and wind.
 - 3D v0.18.2 (2026-11-16): BC's ask. The touch buttons leave the screen the moment a controller is used (they stayed drawn before), and Settings > Touch buttons offers Auto, Always or Off.
+- 3D v0.19.0 Lantern Hill and the talk box (2026-11-17, Release 6): the shared start screen (G5.21, kit 1.10.0) with Lantern Hill and the Waylight tower (item 24, option A). The talk box standard (G5.20): the box grows up from 40 percent down the screen, talk stays until closed (short notes with no speaker still leave), Press A for more or Press A to close, the closing press never reopens the talk, a tap moves it on.
 
 ## Now
 
 Releases A, B and C are done (v0.16.0 to v0.18.0). Waiting on BC: whether the opening story cards move to the speech box too, and what comes next from the list below.
 
-Next release (BC, 2026-11-16, 7:39 PM): includes item 24, the Lantern Hill title card (option A). Decision only. Nothing is started until BC says go. The rest of the release is still BC's pick.
+Item 24, the Lantern Hill title card, shipped in v0.19.0 (BC said go on 2026-11-17 with Release 6). The rest is BC's pick.
 
 ## Asked for by BC, not built yet
 
@@ -60,6 +61,7 @@ Next release (BC, 2026-11-16, 7:39 PM): includes item 24, the Lantern Hill title
 19. Done in 3D v0.16.0. On-screen buttons: parchment discs for Jump and Act and a parchment stick, shown only while playing by touch.
 20. Done in 3D v0.17.0. Glider look: moth-like cloth wings in cream with a red border, dark veins, a wooden spar and two ribbons. Original, built in code.
 21. In part in 3D v0.15.0 (larger open areas, paths and lamp posts in Home Meadows). Still open: towns, farms, roads in the other lands, a bigger map. A bigger, more lifelike world (BC, 2026-11-15): bigger biomes, more open space between areas and denser scenery in others. Towns in some areas with farms, farm animals and several buildings. Roads with light posts at the crossings, and touches like that. Overlaps item 8 (storybook restyle) and idea 6 (Village Buildings). Roads bring in the road rules G6.5 and G6.6, which the game skips today. Bigger lands need the reach and access reports, the end to end walk and a frame rate check on the Retroid.
+22. Suno music, optional (BC, 2026-11-16, waits on G8.7). The Home Meadows songs are BC's picks and stay. Suno is an option for the lands still on code-made music when the four new biomes come (item 1).
 
 ## Ideas to choose from (BC picks by number)
 
@@ -170,3 +172,10 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - Fix: add the deck's solid whenever the bridge is mended. Keep the river wall and the rope with its "Not tonight" note at the far end while the Autumn Woods are off, so the keeper walks out to the rope and reads the note but cannot cross.
    - Check the keeper can climb back out of the river at that spot, and that the rope note prompt sits on the deck where the keeper stands.
    - Add a check to `web_v15` (lands switched off, the bridge rope): walk onto the mended bridge and the keeper stays on the deck at its height.
+
+## Judgment calls in v0.19.0 (BC to confirm)
+
+1. Short notes with no speaker and up to 90 letters ("Home. Your cabin and garden.") keep their timer, as G5.20 allows for notes. Every talk and every long line waits for a press.
+2. A new player sees Play first. Play opens the slot list, so a new game takes two presses instead of one Start press.
+3. The Act key (X) and A both move the talk on. The prompt names A, the button BC used on the Retroid.
+4. The test for the Continue line now reads "2 of " without the total. The total counts only open lands (58 with Home Meadows alone), not 148.
