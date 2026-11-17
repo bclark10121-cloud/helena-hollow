@@ -1,6 +1,6 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-17 with 3D v0.19.0 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-17 with 3D v0.19.1 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
 
@@ -17,6 +17,7 @@ Updated 2026-11-17 with 3D v0.19.0 (shipped). BC's three releases from the "Aske
 - 3D v0.18.0 Home comforts (2026-11-16): KayKit furniture in the cabin with a bed, a couch corner and picture frames (13). Barrels, crates, sacks, a wheelbarrow, a bucket and pumpkins around Home Meadows (14, in part). A song per area of Home Meadows and a Music choice in Settings (9). BC's fixes the same day: every long talk in the storybook speech box page by page (the Pond King first), the notice board as speech with pill buttons, solid hollow logs and five more camera styles.
 - 3D v0.18.1 (2026-11-16): BC's ask. The night cricket bed is gone, and Settings has an Ambience volume for owls, frogs, cave drips and wind.
 - 3D v0.18.2 (2026-11-16): BC's ask. The touch buttons leave the screen the moment a controller is used (they stayed drawn before), and Settings > Touch buttons offers Auto, Always or Off.
+- 3D v0.19.1 (2026-11-17): BC found the three lantern start screens too alike. Keeper gets its own: the Waylight tower on its island at night, beam, shards and parting clouds (`scripts/title_art.gd`). Pixel Hollow keeps Lantern Hill.
 - 3D v0.19.0 Lantern Hill and the talk box (2026-11-17, Release 6): the shared start screen (G5.21, kit 1.10.0) with Lantern Hill and the Waylight tower (item 24, option A). The talk box standard (G5.20): the box grows up from 40 percent down the screen, talk stays until closed (short notes with no speaker still leave), Press A for more or Press A to close, the closing press never reopens the talk, a tap moves it on.
 
 ## Now
