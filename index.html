@@ -1,63 +1,57 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Keeper of the Hollow</title><link rel="icon" href="icon.png">
-<meta name="description" content="Keeper of the Hollow is a cozy 3D quest for Android and the browser. Find the shards of the Waylight. No combat, no timers, no way to lose.">
+<meta name="description" content="Keeper of the Hollow. A cozy quest. For Android and the browser.">
 <style>
-:root{--ink:#f1e7d0;--gold:#e9b755;--bg:#0b0e14;--card:#161a26}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(1200px 700px at 50% -10%,#2a2440 0%,#141a2a 45%,var(--bg) 100%) fixed;color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-main{max-width:860px;margin:0 auto;padding:36px 20px 60px}
-header{text-align:center}header img{width:112px;height:112px;border-radius:22%;box-shadow:0 12px 40px rgba(0,0,0,.6),0 0 0 1px rgba(241,231,208,.3)}
-h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,8vw,60px);letter-spacing:2px;margin:14px 0 0;background:linear-gradient(#fff0c2,#e9b755 55%,#b9772a);-webkit-background-clip:text;background-clip:text;color:transparent}
-.tag{letter-spacing:4px;text-transform:uppercase;font-size:12px;opacity:.85;margin:4px 0 22px}
-.hook{font-family:Georgia,"Times New Roman",serif;font-size:clamp(22px,4.4vw,28px);color:var(--gold);margin:0 0 10px}
-.lead{font-size:18px;max-width:620px;margin:0 auto 24px;text-wrap:balance}
+:root{--ink:#f1e7d0;--accent:#e9b755;--warm:#f2c46a;--card:#161a26;--line:rgba(241,231,208,.16);--btn-ink:#1b1820}
+*{box-sizing:border-box}html{background:#0b0e14}
+body{margin:0;min-height:100vh;background:radial-gradient(1200px 700px at 50% -10%,#2a2440 0%,#141a2a 45%,#0b0e14 100%);background-color:#0b0e14;color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:880px;margin:0 auto;padding:18px 20px 60px}
+.back{font-size:14px;opacity:.85}.back a{color:inherit;text-decoration:none}.back a:hover{text-decoration:underline}
+header{text-align:center;margin-top:8px;color:#f1e7d0}.back{color:#f1e7d0}
+.icon{width:84px;height:84px;border-radius:20px;box-shadow:0 6px 18px rgba(0,0,0,.25);display:block;margin:6px auto 0}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(38px,8vw,62px);letter-spacing:2px;margin:12px 0 0;color:#f2c46a;line-height:1.1;text-shadow:0 0 18px rgba(255,190,90,.35)}
+.tag{letter-spacing:4px;text-transform:uppercase;font-size:12px;opacity:.85;margin:6px 0 4px}
+.hook{font-family:Georgia,"Times New Roman",serif;font-size:20px;color:var(--accent);margin:6px 0 0}
+.lead{font-size:18px;max-width:660px;margin:14px auto 22px;text-wrap:balance}
 .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
-a.btn{display:inline-block;padding:13px 22px;border-radius:12px;font-weight:700;text-decoration:none;border:1px solid rgba(0,0,0,.4)}
-a.primary{background:#c98a2e;color:#1b1820}a.ghost{background:rgba(241,231,208,.1);color:var(--ink);border-color:rgba(241,231,208,.3)}
-a.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
-.note{font-size:13px;opacity:.7;text-align:center}
-.note a{color:inherit}
-.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:34px 0}
-.shots img{width:100%;border-radius:14px;border:1px solid rgba(241,231,208,.2);display:block}
-h2{font-family:Georgia,serif;color:var(--gold);font-size:24px;margin:34px 0 10px}
+a.btn{display:inline-block;padding:13px 22px;border-radius:14px;font-weight:700;text-decoration:none;border:1px solid rgba(0,0,0,.2)}
+a.primary{background:var(--accent);color:var(--btn-ink)}a.ghost{background:var(--card);color:var(--ink);border-color:var(--line)}
+a.btn:focus-visible,.shots a:focus-visible{outline:3px solid var(--warm);outline-offset:2px}
+.note{font-size:13px;opacity:.85;text-align:center}.note a{color:inherit}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0 8px}
+.shots img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:14px;border:1px solid var(--line);display:block}
+h2{font-family:Georgia,"Times New Roman",serif;letter-spacing:1px;color:var(--accent);font-size:24px;margin:34px 0 10px;font-weight:400}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
-.card{background:var(--card);border:1px solid rgba(241,231,208,.16);border-radius:14px;padding:14px 16px}
-.card b{color:var(--gold)}ol,ul{padding-left:20px;margin:6px 0}footer{margin-top:40px;font-size:13px;opacity:.65;text-align:center}
-@media (max-width:560px){.shots{grid-template-columns:1fr 1fr}.shots img:last-child{display:none}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.card b{color:var(--warm)}ol,ul{padding-left:20px;margin:6px 0}a{color:var(--warm)}
+footer{margin-top:44px;font-size:13px;opacity:.8;text-align:center}footer a{color:inherit}
+@media (max-width:560px){.shots{grid-template-columns:1fr}.cta a.btn{width:100%;text-align:center}}
 </style></head><body><main>
-<header><img src="icon.png" alt="Keeper of the Hollow icon: a glowing lantern on a hilltop ringed by ten glass shards"><h1>Keeper of the Hollow</h1><div class="tag">A cozy quest</div>
+<div class="back"><a href="https://bclark10121-cloud.github.io/">&larr; The Game Shelf</a></div>
+<header><img class="icon" src="icon.png" alt=""><h1>Keeper of the Hollow</h1><div class="tag">A cozy quest</div>
 <p class="hook">Bring The Light Home</p>
 <p class="lead">The Waylight lit the hollow until a storm scattered it in ten shards. Now the princess calls up the old well for someone small enough to notice small things. That is you. Explore six lands, find 148 treasures, make good neighbors and take all the time you like.</p>
 <div class="cta"><a class="btn primary" href="3d/">Play in your browser</a><a class="btn ghost" href="downloads/KeeperOfTheHollow-v0.19.1.apk">Download for Android (APK)</a></div>
-<p class="note">Version 0.19.1. <a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/blob/main/release-notes/v0.19.1.md">Release notes</a> · <a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/blob/main/BACKLOG.md">Backlog</a></p></header>
-<div class="shots"><img src="shot-story.jpg" alt="A story card: the Long Night storm breaks the Waylight into ten shards"><img src="shot-talk.jpg" alt="Mira says hello in the speech box by the cabin"><img src="shot-christmas.jpg" alt="The cabin at night with the Christmas theme on"></div>
+<p class="note">Version 0.19.1. <a href="release-notes/v0.19.1.md">Release notes</a> &middot; <a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/blob/main/BACKLOG.md">Backlog</a></p></header>
+<div class="shots"><a href="shot-1.jpg"><img src="shot-1.jpg" alt="The keeper on a lamp-lit night path in Home Meadows, next to Mira" width="960" height="540"></a><a href="shot-2.jpg"><img src="shot-2.jpg" alt="Old Tom by the lamp-lit path and the merchant&#x27;s cart" width="960" height="540"></a><a href="shot-3.jpg"><img src="shot-3.jpg" alt="Mira talking in the storybook talk box" width="960" height="540"></a></div>
 <h2>The story</h2>
 <p>High on Hollow Mountain stood the Waylight, a great lantern every traveler steered home by. Anna, the first lamp keeper, lit it long ago. Last autumn the Long Night storm blew it out and scattered its glass across the hollow. Princess Elowen grew faint as the light failed. She called down the palace well for help, and her voice came up in the old well, where you were drawing water. You are one of the Thimblefolk: small, fond of supper and not at all keen on adventures. You heard her anyway.</p>
 <p>Nobody fights. Each shard has a guardian who asks a favor or a riddle, and the answer is always something you find. The princess says it herself: take your time.</p>
 <h2>What kind of game is this?</h2>
-<div class="grid">
-<div class="card"><b>No combat.</b> No enemies, no health bars, no boss fights. Guardians ask riddles.</div>
-<div class="card"><b>No limits.</b> Unlimited bag. No energy bar. No timers.</div>
-<div class="card"><b>No way to lose.</b> A wrong answer gets a hint and another try.</div>
-<div class="card"><b>Finding is the reward.</b> Treasures, shards, fish, bugs, crops, recipes and friends.</div>
-</div>
+<div class="grid"><div class="card"><b>No combat.</b> No enemies, no health bars, no boss fights. Guardians ask riddles.</div><div class="card"><b>No limits.</b> Unlimited bag. No energy bar. No timers.</div><div class="card"><b>No way to lose.</b> A wrong answer gets a hint and another try.</div><div class="card"><b>Finding is the reward.</b> Treasures, shards, fish, bugs, crops, recipes and friends.</div></div>
 <h2>Things to do</h2>
 <ul><li>Follow the princess's voice and win six shards of the Waylight from six guardians.</li><li>Listen at the old well. Each set on display in the museum wakes an echo of the hollow.</li><li>Get to know ten neighbors. Hear their stories, follow their keepsakes and read Anna's well stones.</li><li>Explore six lands: meadows, autumn woods, a cave, the Deep Cave, snowy peaks and a desert canyon.</li><li>Climb Hollow Mountain, glide down and sign the summit logbook.</li><li>Fish, catch bugs and grow a garden.</li><li>Donate sets to the museum, then walk its hall.</li><li>Cook at the cabin stove, furnish your cabin and trade with the traveling merchant.</li><li>Finish the notice board bundles and the village mends the old well.</li><li>Play fetch with Ninja the cat or Cooper the dog.</li><li>Ring the bell for a festival. Switch on the Christmas theme.</li></ul>
 <h2>Controls</h2>
-<ul><li><b>Keyboard:</b> WASD or arrows to walk, Space to jump and glide, E to act, J for the journal, M for the map, Q and R to turn the view, P for photos, Esc for the Menu row.</li>
-<li><b>Xbox controller:</b> left stick to walk, right stick to look, A to jump (hold it in the air to glide), X to act, Y for the journal, LB and RB to turn the view, RS for photos. View or Menu opens the Menu row. In menus A chooses and B goes back.</li>
-<li><b>Touch:</b> drag on the left to walk, drag on the right to look, Jump and Act buttons on the right. The Menu button in the top right corner opens the map, the journal and settings. The phone's Back opens the same row.</li></ul>
+<div class="grid"><div class="card"><b>Keyboard:</b> WASD or arrows to walk, Space to jump and glide, E to act, J for the journal, M for the map, Q and R to turn the view, P for photos, Esc for the Menu row.</div><div class="card"><b>Xbox controller:</b> left stick to walk, right stick to look, A to jump (hold it in the air to glide), X to act, Y for the journal, LB and RB to turn the view, RS for photos. View or Menu opens the Menu row. In menus A chooses and B goes back.</div><div class="card"><b>Touch:</b> drag on the left to walk, drag on the right to look, Jump and Act buttons on the right. The Menu button in the top right corner opens the map, the journal and settings. The phone's Back opens the same row.</div></div>
 <p class="note">Settings &gt; Camera picks the view: Close and low (the default), Classic, Closer or Diorama. Settings also has Full screen in the browser, Music, Sound, Text size and Reduce motion.</p>
 <h2>Play with an Xbox controller</h2>
 <p>Any Xbox Wireless Controller with Bluetooth works. That is every Series X|S controller and the Xbox One controllers made since 2016. If the plastic around the Xbox button matches the face of the controller, it has Bluetooth. Other controllers that your phone or browser sees as a standard gamepad use the same buttons.</p>
-<div class="grid">
-<div class="card"><b>On Android</b><ol><li>Hold the Xbox button to turn the controller on.</li><li>Hold the small Pair button on top for 3 seconds, until the Xbox button flashes fast.</li><li>On your phone, open Settings, then Connected devices, then Pair new device.</li><li>Tap Xbox Wireless Controller. The Xbox button stays lit when it is connected.</li><li>Open Keeper of the Hollow. The touch buttons stay on screen for now, so leave them be.</li></ol></div>
-<div class="card"><b>In your browser</b><ol><li>Connect the controller to your computer with a USB cable or Bluetooth.</li><li>Open Play in your browser. Chrome, Edge, Firefox and Safari all work.</li><li>Press any button once after the game loads, so the browser sees the controller.</li></ol></div>
-</div>
+<div class="grid"><div class="card"><b>On Android</b><ol><li>Hold the Xbox button to turn the controller on.</li><li>Hold the small Pair button on top for 3 seconds, until the Xbox button flashes fast.</li><li>On your phone, open Settings, then Connected devices, then Pair new device.</li><li>Tap Xbox Wireless Controller. The Xbox button stays lit when it is connected.</li><li>Open Keeper of the Hollow. The touch buttons stay on screen for now, so leave them be.</li></ol></div><div class="card"><b>In your browser</b><ol><li>Connect the controller to your computer with a USB cable or Bluetooth.</li><li>Open Play in your browser. Chrome, Edge, Firefox and Safari all work.</li><li>Press any button once after the game loads, so the browser sees the controller.</li></ol></div></div>
 <h2>Install on Android</h2>
 <ol><li>Tap <b>Download for Android</b>.</li><li>Open the downloaded file.</li><li>If Android asks, allow installs from this source.</li><li>Tap Install, then open the game. It installs over earlier 3D builds and keeps the saves in slots 1 to 5.</li></ol>
-<p class="note">Android may show a Play Protect notice for apps from outside the Play Store. Touch and controllers both work.</p>
+<p class="note">Android may show a Play Protect notice for apps from outside the Play Store. Version 0.19.1 installs over the last version and keeps your saves.</p>
 <h2>Feedback wanted</h2>
 <ul><li>Anything confusing in the first five minutes</li><li>Any spot where you got stuck</li><li>Any part of the story that is unclear</li><li>How walking and controls feel</li><li>Your phone model if you see lag</li></ul>
-<footer>Keeper of the Hollow. Early test build, so expect rough edges. <a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/blob/main/CREDITS.md" style="color:inherit">Credits</a> · <a href="privacy.html" style="color:inherit">Privacy policy</a> · <a href="https://bclark10121-cloud.github.io/" style="color:inherit">More games on The Game Shelf</a></footer>
+<footer>Keeper of the Hollow. Early test build, so expect rough edges. <a href="https://github.com/bclark10121-cloud/keeper-of-the-hollow/blob/main/CREDITS.md">Credits</a> &middot; <a href="privacy.html">Privacy</a> &middot; <a href="https://bclark10121-cloud.github.io/">More games on The Game Shelf</a></footer>
 </main></body></html>
