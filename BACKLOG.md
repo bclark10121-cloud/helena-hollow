@@ -1,8 +1,20 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-18 with 3D v0.20.0 (shipped, Release 7). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-18 with 3D v0.21.0 (Release 8 and the start screen title track). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
+
+- v0.21.0 (Release 8, kit 1.13.0, 2026-11-18): Back at the top left of the Journal, the Map, More, How to play, the photo album and the pick lists (asked for by BC, G5.30). Plays fully upright and sideways (asked for by BC, G6.18): the kit ScreenFit in place of the old 30 percent upright size, the camera keeps its side-to-side view upright with a slightly wider lens, the Menu book stacks its two pages. The start screen plays its own title track, "Dreams Become Real", and fades into the land's music (asked for by BC, G5.21). `tests/orient_test.py` and `tests/look_shot.gd`.
+
+### Judgment calls in v0.21.0 (BC to confirm)
+
+1. More's "Back to the game" became Back at the top left, like every other panel.
+2. Upright, the camera uses each style's lens times 1.15 as its side-to-side view (`Game.PORTRAIT_FOV_K`). BC to judge on a phone.
+3. Upright, the Menu book stacks its list over its preview page. It draws over the speech box.
+4. The Menu button and the find counter fade under a full screen panel.
+5. ScreenFit replaces the old 30 percent upright size. Text size in Settings still scales on top.
+6. `web_v13` fails four checks (Esc on the journal menu, camera distance, label size) on v0.21.0 and on the live v0.20.0 alike. The suite is out of date, not the game. Listed as an open item.
+7. Version 0.21.0, a minor (G6.11).
 
 - v0.20.0 (Release 7, kit 1.13.0): Records with the 18 stamps and 7 stats, Change controls, Battery saver, backup codes in the slot list, old-save checks, an error log and every sound at one loudness level.
 - 2D game, v0.1 to v0.14.8: the pixel and angled game. Fixes only from here.
