@@ -1,8 +1,16 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-18 with 3D v0.21.0 (Release 8 and the start screen title track). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-18 with 3D v0.21.1 (the owl hoot is gone). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
+
+- v0.21.1 (2026-11-18): the owl hoot is gone (item 26, asked for by BC on 2026-11-16). Frogs by the pond still croak. `audio/owl.wav` stays on disk and out of play. `web_v16` checks the owl count stays at 0 and now starts past the start screen.
+
+### Judgment calls in v0.21.1 (BC to confirm)
+
+1. Frogs stay. BC can ask for them to go too.
+2. The Game Shelf picture stays as BC picked it. Only the version and Updated stamp changed.
+3. Version 0.21.1, a patch (G6.11).
 
 - v0.21.0 (Release 8, kit 1.13.0, 2026-11-18): Back at the top left of the Journal, the Map, More, How to play, the photo album and the pick lists (asked for by BC, G5.30). Plays fully upright and sideways (asked for by BC, G6.18): the kit ScreenFit in place of the old 30 percent upright size, the camera keeps its side-to-side view upright with a slightly wider lens, the Menu book stacks its two pages. The start screen plays its own title track, "Dreams Become Real", and fades into the land's music (asked for by BC, G5.21). `tests/orient_test.py` and `tests/look_shot.gd`.
 
@@ -157,7 +165,7 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - Phone portrait: the lantern art on top, the title, line and buttons centred under it, every button 52 px tall or more.
    - Judgment calls in the mockup for BC to confirm when it is built: the line under the title, and the land name on the Continue card.
 25. Bug: talking loops on the X button (BC, 2026-11-16, on the Retroid). Pressing X again and again while a neighbor talks starts the talk over in a loop. Expected: X moves through the lines, the last press closes the speech box and the talk ends. Likely cause: `hud.gd` `_act()` (about line 1634) only turns the page while more pages wait (`say_queue` or `talk_on`). On a one-line talk or the last page, X falls through to `world.nearest()` and `world.act()`, which starts the same talk again. A already works the right way (`_speech_next()`). Fix idea: while the speech box shows, X does what A does (finish the line, then close), and Act ignores the same neighbor for a moment after the box closes. Add a check to `web_v18` or `web_pad`: press X through a whole talk and the box closes with no restart.
-26. Remove the owl hoot (BC, 2026-11-16, 5:18 PM): "I don't like the hoo hoo sound I hear every minute or so." Today `world.gd` `_night_calls()` (about line 4698) plays `audio/owl.wav` from the trees every 18 to 35 seconds (`data/meadows.json` `night_calls.owl`) at the Ambience volume. Stop the owl call. Frogs by the pond stay unless BC says otherwise. Keep `owl.wav` on disk (like `amb_night.ogg`), take it out of play and update the `night_calls` check in `web_v16`. The owl you photograph and the owl guardian are not sounds and stay as they are.
+26. DONE in v0.21.1 (2026-11-18): Remove the owl hoot (BC, 2026-11-16).
 27. Fade trees near the camera (from the 2026-11-16 review, BC said yes the same day): trees between the camera and the keeper hide the keeper, worst with Close and low. Only the cabin, the museum and signposts fade today (`Mesh3.fade`). Trees use the plain material (`world.gd` about line 1258). Fade or see-through any tree (and large rock) between the camera and the keeper, with the same look as the cabin fade. Watch the phone and Retroid frame rate, since the trees are many and use `MultiMeshInstance3D` in places. Pairs with item 22 (Diorama default).
 28. Christmas theme snow cover (BC, 2026-11-16, 5:19 PM): "there needs to be snow on ground and mountains. It's snowing in the air, but all the grass is still green." Today the theme (`world.gd` `_xmas_build()`, about line 2523) adds ornaments, lights, a wreath, gifts and falling snow (`xmas_snow`) but leaves the ground green. With Settings > Christmas theme on: snow on the grass, on Hollow Mountain and the hills, a light dusting on tree tops, rocks, roofs and fences. Paths stay a little darker so they still read. Water stays water. Turning the theme off brings the green back. Likely a ground tint or snow layer in the terrain material and the tree and rock materials, switched with the theme. Check the night look (snow under lamp light) and the frame rate on the Retroid. Update the Christmas checks in `web_v12_village`.
 29. Make the Old Well look like a well (BC, 2026-11-16, 5:20 PM, seen on the Retroid): "The well doesn't look like a well." Today it is a plain grey eight-sided block with a flat closed top (`world.gd` about line 1687: one `CylinderMesh`, radius 0.9, height 0.9, flat colour 8d8794). The roof, posts, rope and bucket (`well_mend`) only show once the four bundles are in, and the Kitchen Bundle cannot be finished while the goat's land is off, so no player sees them today. Ideas:
