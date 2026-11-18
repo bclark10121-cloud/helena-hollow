@@ -1,9 +1,10 @@
 # Keeper of the Hollow: backlog
 
-Updated 2026-11-17 with 3D v0.19.1 (shipped). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
+Updated 2026-11-18 with 3D v0.20.0 (shipped, Release 7). BC's three releases from the "Asked for" list are done: A (v0.16.0), B (v0.17.0) and C (v0.18.0).
 
 ## Done
 
+- v0.20.0 (Release 7, kit 1.13.0): Records with the 18 stamps and 7 stats, Change controls, Battery saver, backup codes in the slot list, old-save checks, an error log and every sound at one loudness level.
 - 2D game, v0.1 to v0.14.8: the pixel and angled game. Fixes only from here.
 - 3D v0.1 to v0.11.1 (Godot): six lands with height, glide and climb, 148 finds in 28 sets, museum, cabin, garden, fishing, companions, neighbors, festivals, treasure maps.
 - 3D v0.12 The Waylight (2026-11-14): renamed to Keeper of the Hollow. The Waylight story with Princess Elowen, six shards and six guardians. Anna's trail. The speech box and the pill look on all text. One corner Menu button. The KayKit cast and real motions, sitting on benches included. The traveling merchant, bundles that mend the Old Well and the Christmas theme. BC's game standards added.
@@ -180,3 +181,20 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
 2. A new player sees Play first. Play opens the slot list, so a new game takes two presses instead of one Start press.
 3. The Act key (X) and A both move the talk on. The prompt names A, the button BC used on the Retroid.
 4. The test for the Continue line now reads "2 of " without the total. The total counts only open lands (58 with Home Meadows alone), not 148.
+
+## Judgment calls in v0.20.0 (BC to confirm)
+
+1. Records shows the game's own 18 stamps as its achievements, so the Journal and Records always agree. Some take longer than two hours (Ten Sets, Curator) and Wanderer needs lands that are switched off today. The 2 hour line in G4.10 is for new achievements, and these stamps were already in the game. Ask BC if he wants a shorter list.
+2. The game keeps its own "Stamp earned" message, so the kit's achievement note is off.
+3. Kit 1.13.0, the newest (G10.4). Back moves to the top of the kit panels now. The game's own panels follow in Release 8.
+4. Keeper keeps its own speech box (G5.20). The handoff allowed the kit box only if the tests stayed green, and the story suite was not part of this release. Open item.
+5. Loudness: the area songs went about 4 dB down in the files and the game plays them 4 dB louder, so they sound the same. The indoor song was already on target, so indoors is now about 4 dB louder than before, level with outdoors.
+6. No Hold or Toggle (G5.23): jump is held to glide only for a moment.
+7. `web_pad` and `web_v13` now expect Records in the Menu row. `web_pad` opens Records with the controller.
+
+## Open items from v0.20.0
+
+1. G5.20: move to the kit talk box with the next story release.
+2. Release 8: Back at the top of the journal menu, map, More and How to play, and both orientations (G5.30, G6.18).
+3. Start screen motion and the title track (G5.21) if not already in place.
+
