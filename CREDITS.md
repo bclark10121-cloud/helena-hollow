@@ -40,6 +40,8 @@ All CC0 1.0 Universal. Patch.gg re-packed each one as a GLB with its pivot at th
 
 ## Music
 
+- Start screen title track (G5.21, v0.21.0): "Dreams Become Real" by Kevin MacLeod (incompetech.com, https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500027), licensed Creative Commons Attribution 4.0 International (https://creativecommons.org/licenses/by/4.0/). From the Patch.gg library. Changed by Patch: converted from MP3 to Ogg Vorbis, credit added to the Ogg comments. Changed: trimmed to a loop and level-matched. File `audio/title.ogg`.
+
 - Night music (from 3D v0.16.0, BC's pick): "First Light Particles" by Yoiyami, on OpenGameArt.org, licensed CC0 1.0 Universal. https://opengameart.org/content/first-light-particles-%E2%80%93-cc0-atmospheric-pianoambient-track Changes: short fades at both ends so it loops, loudness matched, re-encoded to Ogg Vorbis. The high layer that fades in as you climb (`night_high.ogg`) is the same recording filtered to its high notes with a soft echo.
 - Indoor music, the cabin and the museum (from 3D v0.16.0): "Peaceful 3" by Tozan, on OpenGameArt.org, licensed CC0 1.0 Universal. https://opengameart.org/content/peaceful-3 Changes: short fades at both ends so it loops, loudness matched, re-encoded to Ogg Vorbis.
 - Area music in Home Meadows (from 3D v0.18.0), each on OpenGameArt.org and licensed CC0 1.0 Universal. Changes: short fades at both ends so they loop, loudness matched to the night music, re-encoded to Ogg Vorbis.
@@ -62,3 +64,4 @@ All CC0 1.0 Universal. Patch.gg re-packed each one as a GLB with its pivot at th
 ## Tools
 
 - Godot Engine 4.6. https://godotengine.org (MIT licence). Text uses the engine's built-in font.
+- Title font: Cinzel Decorative, SIL Open Font License 1.1. Start screen, game page and Game Shelf card name (G5.21 Title, 2026-11-18). License text in `FONT-LICENSE-CinzelDecorative.txt`.

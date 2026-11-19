@@ -4,6 +4,8 @@ Updated 2026-11-18 with 3D v0.21.1 (the owl hoot is gone). BC's three releases f
 
 ## Done
 
+- v0.21.2 (2026-11-18): start screen title (G5.21 Title, asked for by BC). The name sits in the dead center, above the buttons, in Cinzel Decorative (SIL Open Font License 1.1), on the start screen, the game page and the Game Shelf card. Kit 1.15.0.
+
 - v0.21.1 (2026-11-18): the owl hoot is gone (item 26, asked for by BC on 2026-11-16). Frogs by the pond still croak. `audio/owl.wav` stays on disk and out of play. `web_v16` checks the owl count stays at 0 and now starts past the start screen.
 
 ### Judgment calls in v0.21.1 (BC to confirm)
