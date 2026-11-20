@@ -4,6 +4,8 @@ Updated 2026-11-18 with 3D v0.21.1 (the owl hoot is gone). BC's three releases f
 
 ## Done
 
+- v0.23.0 (2026-11-20): kit move (kit 1.22.0, kit rule 3). Story chapters and neighbor news order on kit K4 story, photo mode on kit K10 with four filters (Warm, Cool, Black and white, Old photo). Old photos move to the kit names. New `tests/kit_check.gd`.
+
 - v0.22.0 (2026-11-19): the opening story in the storybook speech box (BC's sweep pick). Godot 4.7.2 (G6.19), G6.20 (no 60 cap, 120 physics steps, feel check `-- --feel`, Show frame rate in Tester tools), kit 1.17.1 (full screen by default in the browser, G5.11), G6.21 wide check ok.
 
 - v0.21.2 (2026-11-18): start screen title (G5.21 Title, asked for by BC). The name sits in the dead center, above the buttons, in Cinzel Decorative (SIL Open Font License 1.1), on the start screen, the game page and the Game Shelf card. Kit 1.15.0.
