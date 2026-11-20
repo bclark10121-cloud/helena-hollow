@@ -4,11 +4,13 @@ Updated 2026-11-18 with 3D v0.21.1 (the owl hoot is gone). BC's three releases f
 
 ## Done
 
+- v0.22.0 (2026-11-19): the opening story in the storybook speech box (BC's sweep pick). Godot 4.7.2 (G6.19), G6.20 (no 60 cap, 120 physics steps, feel check `-- --feel`, Show frame rate in Tester tools), kit 1.17.1 (full screen by default in the browser, G5.11), G6.21 wide check ok.
+
 - v0.21.2 (2026-11-18): start screen title (G5.21 Title, asked for by BC). The name sits in the dead center, above the buttons, in Cinzel Decorative (SIL Open Font License 1.1), on the start screen, the game page and the Game Shelf card. Kit 1.15.0.
 
 - v0.21.1 (2026-11-18): the owl hoot is gone (item 26, asked for by BC on 2026-11-16). Frogs by the pond still croak. `audio/owl.wav` stays on disk and out of play. `web_v16` checks the owl count stays at 0 and now starts past the start screen.
 
-### Judgment calls in v0.21.1 (BC to confirm)
+### Judgment calls in v0.21.1 (confirmed by BC 2026-11-19)
 
 1. Frogs stay. BC can ask for them to go too.
 2. The Game Shelf picture stays as BC picked it. Only the version and Updated stamp changed.
@@ -16,7 +18,7 @@ Updated 2026-11-18 with 3D v0.21.1 (the owl hoot is gone). BC's three releases f
 
 - v0.21.0 (Release 8, kit 1.13.0, 2026-11-18): Back at the top left of the Journal, the Map, More, How to play, the photo album and the pick lists (asked for by BC, G5.30). Plays fully upright and sideways (asked for by BC, G6.18): the kit ScreenFit in place of the old 30 percent upright size, the camera keeps its side-to-side view upright with a slightly wider lens, the Menu book stacks its two pages. The start screen plays its own title track, "Dreams Become Real", and fades into the land's music (asked for by BC, G5.21). `tests/orient_test.py` and `tests/look_shot.gd`.
 
-### Judgment calls in v0.21.0 (BC to confirm)
+### Judgment calls in v0.21.0 (confirmed by BC 2026-11-19)
 
 1. More's "Back to the game" became Back at the top left, like every other panel.
 2. Upright, the camera uses each style's lens times 1.15 as its side-to-side view (`Game.PORTRAIT_FOV_K`). BC to judge on a phone.
@@ -45,6 +47,11 @@ Updated 2026-11-18 with 3D v0.21.1 (the owl hoot is gone). BC's three releases f
 
 ## Now
 
+- Staged for the next release (BC, 2026-11-19, 10:32 PM): full screen by default in the browser (G5.11, standards 19b). Pull kit 1.17.0 with `sync_common.sh`: the game goes full screen on the first tap, click or key press, and remembers when the player turns it off. Test: `tests/common` browser run, first click sets full screen. Also take G6.20 (120 frames a second) at the same release.
+- Playtest sweep results (BC, 2026-11-19, 8:59 PM):
+  - Good: upright camera, upright Menu book, overall feel since the storybook releases.
+  - Decided: move the opening story cards into the storybook speech box.
+  - All judgment calls from v0.21.0 and v0.21.1 confirmed.
 Releases A, B and C are done (v0.16.0 to v0.18.0). Waiting on BC: whether the opening story cards move to the speech box too, and what comes next from the list below.
 
 Item 24, the Lantern Hill title card, shipped in v0.19.0 (BC said go on 2026-11-17 with Release 6). The rest is BC's pick.
@@ -197,14 +204,14 @@ From the Open items in `STANDARDS_OVERRIDES.md`, plus what has not been tried on
    - Check the keeper can climb back out of the river at that spot, and that the rope note prompt sits on the deck where the keeper stands.
    - Add a check to `web_v15` (lands switched off, the bridge rope): walk onto the mended bridge and the keeper stays on the deck at its height.
 
-## Judgment calls in v0.19.0 (BC to confirm)
+## Judgment calls in v0.19.0 (confirmed by BC 2026-11-19)
 
 1. Short notes with no speaker and up to 90 letters ("Home. Your cabin and garden.") keep their timer, as G5.20 allows for notes. Every talk and every long line waits for a press.
 2. A new player sees Play first. Play opens the slot list, so a new game takes two presses instead of one Start press.
 3. The Act key (X) and A both move the talk on. The prompt names A, the button BC used on the Retroid.
 4. The test for the Continue line now reads "2 of " without the total. The total counts only open lands (58 with Home Meadows alone), not 148.
 
-## Judgment calls in v0.20.0 (BC to confirm)
+## Judgment calls in v0.20.0 (confirmed by BC 2026-11-19)
 
 1. Records shows the game's own 18 stamps as its achievements, so the Journal and Records always agree. Some take longer than two hours (Ten Sets, Curator) and Wanderer needs lands that are switched off today. The 2 hour line in G4.10 is for new achievements, and these stamps were already in the game. Ask BC if he wants a shorter list.
 2. The game keeps its own "Stamp earned" message, so the kit's achievement note is off.
